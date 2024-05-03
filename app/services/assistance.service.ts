@@ -36,6 +36,7 @@ export interface IPhoneNumbers {
 
 export interface ILocations {
   id: number
+  name: string
   location: string
   email: string
   phone: string
