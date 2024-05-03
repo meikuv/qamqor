@@ -1,0 +1,106 @@
+{
+  "translation": {
+    "login": {
+      "title": "Добро пожаловать",
+      "username": "Введите логин",
+      "usernameError": "Заполните поле логин",
+      "password": "Введите пароль",
+      "passwordError": "Заполните поле пароль",
+      "loginButton": "Войти",
+      "toRegistration": "Пройти регистрацию",
+      "loginSuccess": "Успешно вошли в систему",
+      "loginError": "Ошибка авторизация"
+    },
+    "register": {
+      "title": "Регистарция",
+      "username": "Создайте новый логин",
+      "usernameError": "Заполните поле логин",
+      "email": "Введите email",
+      "emailError": "Заполните поле email",
+      "password": "Создайте пароль",
+      "passwordError": "Заполните поле пароль",
+      "registerButton": "Создать",
+      "toLogin": "Войти в свой аккаунт",
+      "registerSuccess": "Вы успешно зарегистрированы",
+      "registerError": "Ошибка сети"
+    },
+    "verification": {
+      "title": "Email верификация",
+      "subTitle": "Проверочный код был отправлен по адресу",
+      "verificationButton": "Подтверждение",
+      "verificationSuccess": "Успешно прошли верификацию",
+      "verificationError": "Ошибка сети"
+    },
+    "empty": {
+      "title": "К сожалению на данной странице ничего нет!"
+    },
+    "home": {
+      "title": "Басты бет",
+      "search": "Поиск",
+      "charityTitle": "Благотворительная помощь",
+      "charityCenter": "Благотворительный Фонд",
+      "volunteerTitle": "Волонтерская помощь",
+      "volunteerCenter": "Волонтерский Центр",
+      "lawyerTitle": "Юридическая помощь",
+      "lawyerCenter": "Юридический Центр",
+      "overlayOne": "Рука помощи — знак человечности.",
+      "overlayTwo": "Рука, протянутая в помощь, никогда не останется пустой."
+    },
+    "map": {
+      "title": "Карта"
+    },
+    "support": {
+      "title": "Поддержка"
+    },
+    "profile": {
+      "title": "Профиль"
+    },
+    "profileUpdate": {
+      "title": "Обновить данные",
+      "image": "Изменить фото профиля",
+      "username": "Логин",
+      "email": "Почта",
+      "firstName": "Имя",
+      "lastName": "Фамилия",
+      "phoneNumber": "Номер телефона",
+      "updateButton": "Обновить",
+      "responseSuccess": "Данные обновились"
+    },
+    "settings": {
+      "title": "Настройки",
+      "appLang": "Язык приложения",
+      "general": "Общие",
+      "notification": "Уведомеление"
+    },
+    "changePassword": {
+      "title": "Изменить пароль",
+      "oldPassword": "Текущий пароль",
+      "oldPasswordError": "Заполните текущий пароль",
+      "newPassword": "Новый пароль",
+      "newPasswordError": "Заполните новый пароль",
+      "confirmPassword": "Подтвердите пароль",
+      "confirmPasswordError": "Заполните подтверждение пароля",
+      "updateButton": "Обновить",
+      "responseSuccess": "Пароль успешно изменен",
+      "imageSuccess": "Фото сохранено"
+    },
+    "history": {
+      "title": "История"
+    },
+    "myRequests": {
+      "title": "Мои запросы"
+    },
+    "leaveReview": {
+      "title": "Оставить отзыв"
+    },
+    "contact": {
+      "title": "Связаться с нами",
+      "phoneNumber": "Номер телефона",
+      "email": "Почта"
+    },
+    "logout": {
+      "title": "Выход",
+      "logoutSuccess": "Вы вышли из системы"
+    }
+  }
+}

@@ -1,20 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context'
+import { StatusBar } from 'expo-status-bar'
+import { AuthProvider } from './app/providers/auth'
+import { I18nProvider } from './app/providers/i18n'
+import { UserProvider } from './app/providers/user'
+import { AssistanceProvider } from './app/providers/assistance'
+import Navigation from './app/navigations'
+import Toast from 'react-native-toast-message'
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <I18nProvider>
+      <AuthProvider>
+        <UserProvider>
+          <AssistanceProvider>
+            <SafeAreaProvider>
+              <Navigation />
+              <Toast />
+              <StatusBar style="auto" />
+            </SafeAreaProvider>
+          </AssistanceProvider>
+        </UserProvider>
+      </AuthProvider>
+    </I18nProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

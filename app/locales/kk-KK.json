@@ -1,0 +1,107 @@
+{
+  "translation": {
+    "login": {
+      "title": "Қош келдіңіз",
+      "username": "Логинді енгізіңіз",
+      "usernameError": "Логин толтырыңыз",
+      "password": "Құпия сөзді енгізіңіз",
+      "passwordError": "Құпия сөзді толтырыңыз",
+      "loginButton": "Кіру",
+      "toRegistration": "Тіркеуден өту",
+      "loginSuccess": "Жүйеге сәтті кірдіңіз",
+      "loginError": "Қате авторизация"
+    },
+    "register": {
+      "title": "Тіркеу",
+      "username": "Жаңа логин жасаңыз",
+      "usernameError": "Логинді толтырыңыз",
+      "email": "Электрондық пошта енгізіңіз",
+      "emailError": "Электрондық пошта толтырыңыз",
+      "password": "Құпия сөзді құрыңыз",
+      "passwordError": "Құпия сөзді толтырыңыз",
+      "registerButton": "Жасау",
+      "toLogin": "Өз акаунтыңызға кіру",
+      "registerSuccess": "Сіз сәтті тіркелдіңіз",
+      "registerError": "Желі қатесі"
+    },
+    "verification": {
+      "title": "Email верификация",
+      "subTitle": "Тексеру коды жіберілді",
+      "verificationButton": "Растау",
+      "verificationSuccess": "Тексеруден сәтті өттіңіз",
+      "verificationError": "Желі қатесі"
+    },
+    "empty": {
+      "title": "Өкінішке орай, бұл бетте ештеңе жоқ!"
+    },
+    "home": {
+      "title": "Басты бет",
+      "search": "Іздеу",
+      "charityTitle": "Қайырымдылық көмек",
+      "charityCenter": "Қайырымдылық Қоры",
+      "volunteerTitle": "Еріктілер көмегі",
+      "volunteerCenter": "Еріктілер Орталығы",
+      "lawyerTitle": "Заң көмегі",
+      "lawyerCenter": "Заң Орталығы",
+      "overlayOne": "Көмек қолы-адамзаттың белгісі.",
+      "overlayTwo": "Не керек жатқан байлық судай тасып, Тұрмасаң қалың жұртқа қарайласып."
+    },
+    "assistance": {},
+    "map": {
+      "title": "Карта"
+    },
+    "support": {
+      "title": "Қолдау қызметі"
+    },
+    "profile": {
+      "title": "Профиль"
+    },
+    "profileUpdate": {
+      "title": "Деректерді жаңарту",
+      "image": "Суретті өзгерту",
+      "username": "Логин",
+      "email": "Электрондық пошта",
+      "firstName": "Аты",
+      "lastName": "Тегі",
+      "phoneNumber": "Телефон нөмірі",
+      "updateButton": "Жаңарту",
+      "responseSuccess": "Деректер жаңартылды",
+      "imageSuccess": "Фото сәтті сақталды"
+    },
+    "settings": {
+      "title": "Параметрлер",
+      "appLang": "Қолдану тілі",
+      "general": "Жалпы",
+      "notification": "Xабарлама"
+    },
+    "changePassword": {
+      "title": "Құпия сөзді өзгерту",
+      "oldPassword": "Ағымдағы құпия сөз",
+      "oldPasswordError": "Ағымдағы құпия сөзді толтырыңыз",
+      "newPassword": "Жаңа құпия сөз",
+      "newPasswordError": "Жаңа құпия сөзді толтырыңыз",
+      "confirmPassword": "Құпия сөзді растаңыз",
+      "confirmPasswordError": "Растау құпия сөзін толтырыңыз",
+      "updateButton": "Жаңарту",
+      "responseSuccess": "Құпия сөз сәтті өзгертілді"
+    },
+    "history": {
+      "title": "Тарих"
+    },
+    "myRequests": {
+      "title": "Менің сұрауларым"
+    },
+    "leaveReview": {
+      "title": "Пікір қалдыру"
+    },
+    "contact": {
+      "title": "Бізбен байланыс",
+      "phoneNumber": "Телефондар",
+      "email": "Электрондық пошта"
+    },
+    "logout": {
+      "title": "Шығу",
+      "logoutSuccess": "Сіз жүйеден шықтыңыз"
+    }
+  }
+}
