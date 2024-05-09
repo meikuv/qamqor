@@ -9,8 +9,8 @@ export interface IAssistance {
   descriptionKZ: string
   descriptionRU: string
   contact: IContact
-  charityDirections: IDirection[]
-  requisite: IRequisite[]
+  directions: IDirection[]
+  requisites: IRequisites[]
   phoneNumbers: IPhoneNumbers[]
   locations: ILocations[]
 }
@@ -25,7 +25,8 @@ export interface IContact {
 
 export interface IDirection {
   id: number
-  title: string
+  titleKZ: string
+  titleRU: string
 }
 
 export interface IPhoneNumbers {
@@ -42,7 +43,7 @@ export interface ILocations {
   phone: string
 }
 
-export interface IRequisite {
+export interface IRequisites {
   id: number
   respondent: string
   accountNumber: string

@@ -1,9 +1,14 @@
-import React from 'react'
-import { View, Text, Image, ImageBackground } from 'react-native'
+import React, { FC } from 'react'
+import { View, Text, Image, ImageBackground, Pressable, Linking } from 'react-native'
+import { IRequisites } from '../services/assistance.service'
 
-const DebitCard = () => {
+interface IDebitCardProps {
+  debitCardProps: IRequisites
+}
+
+const DebitCard: FC<IDebitCardProps> = ({ debitCardProps }) => {
   return (
-    <View className="w-72 h-40 mr-2 bg-red-100 rounded-2xl">
+    <View className="w-72 h-max mr-2 bg-red-100 rounded-2xl">
       <ImageBackground
         style={{
           flex: 1,
@@ -16,13 +21,25 @@ const DebitCard = () => {
           <View className="flex-row justify-between">
             <View>
               <Text className="text-white">Name</Text>
-              <Text className="text-white">Meirzhan K</Text>
+              <Text className="text-white">{debitCardProps.respondent}</Text>
             </View>
             <Image className="w-14 h-14" source={{ uri: 'https://i.imgur.com/bbPHJVe.png' }} />
           </View>
           <View className="pt-1">
-            <Text className="text-white">Card Number</Text>
-            <Text className="text-white font-medium tracking-more-wider">4642 3489 9867 7632</Text>
+            <Text className="text-white">Account Number</Text>
+            {debitCardProps.onlinePaymentUrl && (
+              <Pressable onPress={() => Linking.openURL(`${debitCardProps.onlinePaymentUrl}`)}>
+                <Text className="text-white">{debitCardProps.onlinePaymentUrl}</Text>
+              </Pressable>
+            )}
+            {debitCardProps.accountNumber && (
+              <Text className="text-white font-medium tracking-more-wider">
+                {debitCardProps.accountNumber}
+              </Text>
+            )}
+            {debitCardProps.currency && (
+              <Text className="text-white">{debitCardProps.currency}</Text>
+            )}
           </View>
         </View>
       </ImageBackground>

@@ -1,23 +1,42 @@
-import React, { FC } from 'react'
-import { useTranslation } from 'react-i18next'
-import { View, Text, Pressable, ImageBackground, FlatList, RefreshControl } from 'react-native'
+import React, { FC, useEffect, useState } from 'react'
+import { View, Text, Pressable, ImageBackground } from 'react-native'
 import { useAssistance } from '../../../../hooks/useAssistance'
 import { IAssistance } from '../../../../services/assistance.service'
 import { useNavigation } from '@react-navigation/native'
+import { useI18n } from '../../../../hooks/useI18n'
 import DefaultLayout from '../../../../components/layout/DefaultLayout'
+import IconButton from '../../../../components/ui/IconButton'
 
 const CharityList: FC = () => {
-  const { t } = useTranslation()
   const navigation = useNavigation()
   const { charityList } = useAssistance()
+  const { locale } = useI18n()
+  const [typeKey, setTypeKey] = useState<any>(locale)
+  const [charityListByType, setCharityListByType] = useState<{ [key: string]: IAssistance[] }>({})
+  const [collapsed, setCollapsed] = useState<{ [key: string]: boolean }>({})
 
-  const charityListByType: { [key: string]: IAssistance[] } = {}
-  charityList?.forEach((charity) => {
-    if (!charityListByType[charity.typeKZ]) {
-      charityListByType[charity.typeKZ] = []
-    }
-    charityListByType[charity.typeKZ].push(charity)
-  })
+  useEffect(() => {
+    setTypeKey(locale)
+  }, [locale])
+
+  useEffect(() => {
+    const updatedCharityListByType: { [key: string]: IAssistance[] } = {}
+    charityList?.forEach((charity) => {
+      const key = typeKey === 'kk' ? charity.typeKZ : charity.typeRU
+      if (!updatedCharityListByType[key]) {
+        updatedCharityListByType[key] = []
+      }
+      updatedCharityListByType[key].push(charity)
+    })
+    setCharityListByType(updatedCharityListByType)
+  }, [locale, charityList, typeKey])
+
+  const toggleCollapse = (type: string) => {
+    setCollapsed((prevState) => ({
+      ...prevState,
+      [type]: !prevState[type],
+    }))
+  }
 
   const CharityItem: FC<{ charity: IAssistance }> = ({ charity }) => {
     return (
@@ -44,17 +63,28 @@ const CharityList: FC = () => {
   }
 
   const ListHeader: FC<{ type: string; count: number }> = ({ type, count }) => {
-    return <Text className="text-black font-bold text-xl mb-2">{type}</Text>
+    return (
+      <View className="flex-row justify-between">
+        <Text className="text-black font-bold text-xl mb-2">{type}</Text>
+        <IconButton
+          name={collapsed[type] ? 'chevron-down' : 'chevron-up'}
+          size={25}
+          color="black"
+          onPress={() => toggleCollapse(type)}
+        />
+      </View>
+    )
   }
 
   return (
     <DefaultLayout isScrollView={true} bgColor="bg-white">
       {Object.keys(charityListByType).map((type) => (
-        <View className="w-full pt-2 px-4">
+        <View className="w-full pt-2 px-4" key={type}>
           <ListHeader type={type} count={charityListByType[type].length} />
-          {charityListByType[type].map((charity) => (
-            <CharityItem key={charity.id} charity={charity} />
-          ))}
+          {!collapsed[type] &&
+            charityListByType[type].map((charity) => (
+              <CharityItem key={charity.id} charity={charity} />
+            ))}
         </View>
       ))}
     </DefaultLayout>

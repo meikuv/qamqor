@@ -6,6 +6,7 @@ import SafeLayout from '../../components/layout/SafeLayout'
 import Field from '../../components/ui/Field'
 import OverlayImage from './components/OverlayImage'
 import TextLink from '../../components/ui/TextLink'
+import VideoPlayer from './components/VideoPlayer'
 
 const Home: FC = () => {
   const { t } = useTranslation()
@@ -39,7 +40,7 @@ const Home: FC = () => {
               />
             ))}
           </View>
-          <OverlayImage index={1} height="h-52" />
+          <VideoPlayer />
           <View className="flex-col items-start justify-center mt-5 mx-2">
             {markers.map((marker) => (
               <TextLink

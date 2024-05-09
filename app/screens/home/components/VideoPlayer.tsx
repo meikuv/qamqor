@@ -1,39 +1,29 @@
-import React, { useRef } from 'react'
-import { View } from 'react-native'
-import { Video, ResizeMode } from 'expo-av'
-import IconButton from '../../../components/ui/IconButton'
+import React, { useState, useCallback } from 'react'
+import { View, Alert } from 'react-native'
+import YoutubePlayer from 'react-native-youtube-iframe'
 
 const VideoPlayer = () => {
-  const videoRef = useRef(null)
-  const [status, setStatus] = React.useState({})
+  const [playing, setPlaying] = useState(false)
+
+  const onStateChange = useCallback((state: any) => {
+    if (state === 'ended') {
+      setPlaying(false)
+    }
+  }, [])
+
+  const togglePlaying = useCallback(() => {
+    setPlaying((prev) => !prev)
+  }, [])
+
   return (
-    <View className="w-full h-80 flex items-center justify-center">
-      <Video
-        ref={videoRef}
-        className="w-3/4 h-72 rounded-xl"
-        source={{
-          uri: 'https://social-assistance-bucket.s3.eu-central-1.amazonaws.com/document_5283040405233879322.mp4',
-        }}
-        useNativeControls
-        resizeMode={ResizeMode.COVER}
-        isLooping
-        onPlaybackStatusUpdate={(status) => setStatus(() => status)}
+    <View style={{ width: '100%', height: 'auto', borderRadius: 12, overflow: 'hidden' }}>
+      <YoutubePlayer
+        height={200}
+        play={playing}
+        webViewStyle={{ borderRadius: 12 }}
+        videoId={'Jmj9aRKp66I'}
+        onChangeState={onStateChange}
       />
-      {status.isPlaying ? (
-        <IconButton
-          name="pause"
-          size={20}
-          color="#3b82f6"
-          onPress={() => videoRef.current.pauseAsync()}
-        />
-      ) : (
-        <IconButton
-          name="play"
-          size={20}
-          color="#3b82f6"
-          onPress={() => videoRef.current.playAsync()}
-        />
-      )}
     </View>
   )
 }
