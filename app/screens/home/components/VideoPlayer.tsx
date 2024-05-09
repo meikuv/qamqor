@@ -16,11 +16,18 @@ const VideoPlayer = () => {
   }, [])
 
   return (
-    <View style={{ width: '100%', height: 'auto', borderRadius: 12, overflow: 'hidden' }}>
+    <View
+      style={{
+        width: 'auto',
+        height: 'auto',
+        borderRadius: 12,
+        overflow: 'hidden',
+        marginHorizontal: 8,
+      }}
+    >
       <YoutubePlayer
-        height={200}
+        height={210}
         play={playing}
-        webViewStyle={{ borderRadius: 12 }}
         videoId={'Jmj9aRKp66I'}
         onChangeState={onStateChange}
       />

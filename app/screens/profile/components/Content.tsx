@@ -5,6 +5,7 @@ import { useAuth } from '../../../hooks/useAuth'
 import { useNavigation } from '@react-navigation/native'
 import TextLink from '../../../components/ui/TextLink'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
+import DefaultLayout from '../../../components/layout/DefaultLayout'
 
 const Content = () => {
   const navigation = useNavigation()
@@ -50,13 +51,13 @@ const Content = () => {
   ]
 
   return (
-    <ScrollView style={{ padding: 10 }}>
-      <View className="w-full h-max items-start justify-center bg-white rounded-xl px-5 pt-4">
+    <DefaultLayout bgColor="bg-white mt-4">
+      <View className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-400 px-5 pt-4">
         {links.map((link) => (
           <TextLink key={link.key} title={link.title} iconName={link.iconName} onPress={() => {}} />
         ))}
       </View>
-      <View className="w-full h-max items-start justify-center bg-white rounded-xl px-5 pt-4 mt-4">
+      <View className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-400 px-5 pt-4 mt-4">
         {others.map((other) => (
           <TextLink
             key={other.key}
@@ -70,7 +71,7 @@ const Content = () => {
           <Text className="text-base text-red-500">{t('logout.title')}</Text>
         </Pressable>
       </View>
-    </ScrollView>
+    </DefaultLayout>
   )
 }
 

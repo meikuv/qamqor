@@ -3,12 +3,13 @@ import { View, Text, Pressable } from 'react-native'
 import { useAuth } from '../../../hooks/useAuth'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import { useUser } from '../../../hooks/useUser'
+import { useAssistance } from '../../../hooks/useAssistance'
 import Loader from '../../../components/ui/Loader'
 import Field from '../../../components/ui/Field'
 import TextButton from '../../../components/ui/TextButton'
 import DefaultLayout from '../../../components/layout/DefaultLayout'
-import { useUser } from '../../../hooks/useUser'
-import { useAssistance } from '../../../hooks/useAssistance'
+import tokenService from '../../../services/token.service'
 
 interface IData {
   username: string

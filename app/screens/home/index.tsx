@@ -36,15 +36,15 @@ const Home: FC = () => {
         <View>
           <ImageBackground
             source={require('../../../assets/heart.jpeg')}
-            className="w-full h-44"
+            className="w-full h-52"
             imageStyle={{ borderRadius: 12 }}
           />
           <View className="absolute inset-0 w-full h-full bg-gray-900 opacity-50 rounded-xl"></View>
           <View className="absolute top-0 left-0 right-0 bottom-10 justify-end items-center">
-            <Text className="text-white text-sm font-bold text-center">{image[0].text}</Text>
+            <Text className="text-white text-base font-bold text-center">{image[0].text}</Text>
           </View>
-          <View className="w-full absolute -top-5 left-0 right-0 bottom-10 flex-1 flex-row justify-between items-center">
-            <Pressable className="w-9/12 mx-2" onPressIn={() => navigation.navigate('Search')}>
+          <View className="w-full absolute -top-10 left-0 right-0 bottom-10 flex-1 flex-row justify-center items-center">
+            <Pressable className="w-11/12" onPressIn={() => navigation.navigate('Search')}>
               <Field
                 placeholder={t('home.search')}
                 shadow={true}
@@ -52,37 +52,30 @@ const Home: FC = () => {
                 isDisabled={true}
               />
             </Pressable>
-            <UserImage imageStyle="w-16 h-16 mx-2 mt-2 rounded-full" />
           </View>
         </View>
-        {/* <Pressable onPressIn={() => navigation.navigate('Search')}>
-          <Field placeholder={t('home.search')} shadow={true} color="bg-white" isDisabled={true} />
-        </Pressable>
-        <ScrollView style={{ marginTop: 12 }} showsVerticalScrollIndicator={false}>
-          <OverlayImage index={0} height="h-36" />
-          <View className="flex-col items-center justify-center mt-5 mx-2">
-            {links.map((link) => (
-              <TextLink
-                key={link.key}
-                title={link.title}
-                iconName={link.icon}
-                onPress={() => navigation.navigate(link.navigate)}
-              />
-            ))}
-          </View>
-          <VideoPlayer />
-          <View className="flex-col items-start justify-center mt-5 mx-2">
-            {markers.map((marker) => (
-              <TextLink
-                key={marker.key}
-                title={marker.title}
-                iconName="map-marker"
-                iconColor={marker.iconColor}
-                onPress={() => {}}
-              />
-            ))}
-          </View>
-        </ScrollView> */}
+        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-500 my-5 mx-2 px-4 pt-4">
+          {links.map((link) => (
+            <TextLink
+              key={link.key}
+              title={link.title}
+              iconName={link.icon}
+              onPress={() => navigation.navigate(link.navigate)}
+            />
+          ))}
+        </View>
+        <VideoPlayer />
+        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-500 my-5 mx-2 px-4 pt-4">
+          {markers.map((marker) => (
+            <TextLink
+              key={marker.key}
+              title={marker.title}
+              iconName="map-marker"
+              iconColor={marker.iconColor}
+              onPress={() => {}}
+            />
+          ))}
+        </View>
       </View>
     </DefaultLayout>
   )

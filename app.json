@@ -13,14 +13,23 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.meikuv.qamqor",
+      "config": {
+        "googleMapsApiKey": "AIzaSyD_Gys-vqSrIc9-WZaeTGqgdHOUC6STVY4"
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/app-splash.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.meikuv.qamqor"
+      "package": "com.meikuv.qamqor",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyD_Gys-vqSrIc9-WZaeTGqgdHOUC6STVY4"
+        }
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

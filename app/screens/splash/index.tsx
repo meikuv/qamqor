@@ -1,12 +1,7 @@
 import React, { FC, useEffect, useRef } from 'react'
 import { Animated, Image, StyleSheet } from 'react-native'
-import { useAssistance } from '../../hooks/useAssistance'
-import { useUser } from '../../hooks/useUser'
-import tokenService from '../../services/token.service'
 
 const Splash: FC = () => {
-  const { connectedUser } = useUser()
-  const { getAllCharity, getAllVolunteer } = useAssistance()
   const fadeAnim = useRef(new Animated.Value(0)).current
 
   useEffect(() => {
@@ -15,18 +10,6 @@ const Splash: FC = () => {
       duration: 1000,
       useNativeDriver: true,
     }).start(() => {})
-
-    const initial = async () => {
-      const accessToken = await tokenService.getLocalAccesToken()
-      if (accessToken) {
-        await connectedUser()
-        await getAllCharity()
-        await getAllVolunteer()
-      } else {
-        return
-      }
-    }
-    initial()
   }, [fadeAnim])
 
   return (

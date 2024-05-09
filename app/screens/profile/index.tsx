@@ -8,7 +8,7 @@ const Profile = () => {
   const { user } = useUser()
 
   return (
-    <DefaultLayout>
+    <DefaultLayout bgColor="bg-white">
       <Header user={user} />
       <Content />
     </DefaultLayout>
