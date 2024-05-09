@@ -3,8 +3,8 @@ import { View, Text, Pressable, ImageBackground } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useAssistance } from '../../../../hooks/useAssistance'
 import { IAssistance } from '../../../../services/assistance.service'
-import DefaultLayout from '../../../../components/layout/DefaultLayout'
 import { useNavigation } from '@react-navigation/native'
+import DefaultLayout from '../../../../components/layout/DefaultLayout'
 
 const VolunteerList: FC = () => {
   const { t } = useTranslation()

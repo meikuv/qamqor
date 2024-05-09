@@ -1,21 +1,42 @@
-import React, { FC, useState } from 'react'
+import React, { FC, useEffect, useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
 import { useAuth } from '../hooks/useAuth'
+import tokenService from '../services/token.service'
 import Splash from '../screens/splash'
 import AuthStack from './auth'
 import PrivateStack from './private'
 import Search from '../screens/search'
+import { useAssistance } from '../hooks/useAssistance'
+import { useUser } from '../hooks/useUser'
 
 const Stack = createNativeStackNavigator()
 
 const Navigation: FC = () => {
   const { isLoggedIn } = useAuth()
-  const [isLoading, setIsloading] = useState<boolean>(true)
+  const { connectedUser } = useUser()
+  const { getAllCharity, getAllVolunteer } = useAssistance()
+  const [token, setToken] = useState<any>(null)
+  const [isSpalshLoading, setSplashIsloading] = useState<boolean>(true)
 
-  setTimeout(() => {
-    setIsloading(false)
-  }, 2000)
+  const initial = async () => {
+    setSplashIsloading(true)
+    try {
+      const accessToken = await tokenService.getLocalAccesToken()
+      setToken(accessToken)
+      if (accessToken) {
+        await connectedUser()
+        await getAllCharity()
+        await getAllVolunteer()
+      }
+    } finally {
+      setSplashIsloading(false)
+    }
+  }
+
+  useEffect(() => {
+    initial()
+  }, [])
 
   return (
     <NavigationContainer>
@@ -26,9 +47,9 @@ const Navigation: FC = () => {
           animation: 'slide_from_right',
         }}
       >
-        {isLoading ? (
+        {isSpalshLoading ? (
           <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splash} />
-        ) : isLoggedIn ? (
+        ) : isLoggedIn || token ? (
           <>
             <Stack.Screen
               options={{ headerShown: false }}

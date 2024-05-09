@@ -34,7 +34,7 @@ const Field: FC<IField> = ({
   closeIcon,
 }) => {
   return (
-    <>
+    <View className="w-full">
       {label && <Text className="text-sky-600 text-md ml-2 mt-2">{label}:</Text>}
       <View className="flex-row items-center">
         <TextInput
@@ -57,7 +57,7 @@ const Field: FC<IField> = ({
         )}
       </View>
       {error && <Text className="text-xs text-red-500 mt-1 mx-2">{error}</Text>}
-    </>
+    </View>
   )
 }
 

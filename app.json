@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "qamqor",
-    "slug": "qamqor",
+    "name": "Qamqor",
+    "slug": "Qamqor",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -11,15 +11,13 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/app-splash.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.meikuv.qamqor"
@@ -39,7 +37,7 @@
     ],
     "extra": {
       "eas": {
-        "projectId": "99ed9113-43aa-417f-9a79-3e1438b3b7b8"
+        "projectId": "e9f5949b-203d-46d6-9f6b-7905d6f8bfd8"
       }
     }
   }

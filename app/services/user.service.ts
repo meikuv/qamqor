@@ -10,13 +10,6 @@ export interface IUser {
   phoneNumber: string
 }
 
-export interface IVideo {
-  id: number
-  title: string
-  videoName: string
-  videoUrl: string
-}
-
 export interface IChangePassword {
   oldPassword: string
   newPassword: string

@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useState } from 'react'
-import { View, Text, Pressable, ImageBackground } from 'react-native'
+import { View, Text, Pressable, ImageBackground, RefreshControl } from 'react-native'
 import { useAssistance } from '../../../../hooks/useAssistance'
 import { IAssistance } from '../../../../services/assistance.service'
 import { useNavigation } from '@react-navigation/native'
@@ -9,11 +9,21 @@ import IconButton from '../../../../components/ui/IconButton'
 
 const CharityList: FC = () => {
   const navigation = useNavigation()
-  const { charityList } = useAssistance()
+  const { charityList, getAllCharity } = useAssistance()
   const { locale } = useI18n()
   const [typeKey, setTypeKey] = useState<any>(locale)
   const [charityListByType, setCharityListByType] = useState<{ [key: string]: IAssistance[] }>({})
   const [collapsed, setCollapsed] = useState<{ [key: string]: boolean }>({})
+
+  const [refreshing, setRefreshing] = useState(false)
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    await getAllCharity()
+    setTimeout(() => {
+      setRefreshing(false)
+    }, 2000)
+  }
 
   useEffect(() => {
     setTypeKey(locale)
@@ -77,7 +87,10 @@ const CharityList: FC = () => {
   }
 
   return (
-    <DefaultLayout isScrollView={true} bgColor="bg-white">
+    <DefaultLayout
+      bgColor="bg-white"
+      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+    >
       {Object.keys(charityListByType).map((type) => (
         <View className="w-full pt-2 px-4" key={type}>
           <ListHeader type={type} count={charityListByType[type].length} />

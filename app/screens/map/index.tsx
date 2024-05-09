@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Dimensions, TouchableWithoutFeedback, View, Text } from 'react-native'
-import MapView, { Marker } from 'react-native-maps'
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('screen')
 
@@ -27,6 +27,7 @@ const Map: FC<IMap> = ({ region }) => {
     <MapView
       style={{ flex: 1, width: screenWidth, height: screenHeight }}
       initialRegion={region || defaultRegion}
+      provider={PROVIDER_GOOGLE}
     >
       <Marker
         coordinate={{

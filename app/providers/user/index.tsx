@@ -1,7 +1,7 @@
 import React, { createContext, useMemo, useState, FC, ReactNode } from 'react'
 import { showToast } from '../../components/toast'
-import userService, { IChangePassword, IUser, IVideo } from '../../services/user.service'
 import { useTranslation } from 'react-i18next'
+import userService, { IChangePassword, IUser } from '../../services/user.service'
 
 interface IContext {
   isLoading: boolean
@@ -21,7 +21,6 @@ export const UserContext = createContext<IContext>({} as IContext)
 export const UserProvider: FC<UserProviderProps> = ({ children }) => {
   const { t } = useTranslation()
   const [user, setUser] = useState<IUser>({} as IUser)
-  const [video, setVideo] = useState<IVideo>({} as IVideo)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const connectedUser = async () => {
