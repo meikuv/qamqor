@@ -31,14 +31,14 @@ class TokenService {
 
   async clearCredentials() {
     try {
-      await AsyncStorage.clear()
+      await AsyncStorage.removeItem('credentials')
       console.log('AsyncStorage cleared successfully.')
     } catch (error) {
       console.error('Error clearing data from AsyncStorage:', error)
     }
   }
 
-  async getLocalAccesToken(): Promise<string | undefined> {
+  async getLocalAccessToken(): Promise<string | undefined> {
     const credentials = await this.getCredentials()
     return credentials?.accessToken
   }

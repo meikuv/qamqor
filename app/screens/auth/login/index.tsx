@@ -9,7 +9,6 @@ import Loader from '../../../components/ui/Loader'
 import Field from '../../../components/ui/Field'
 import TextButton from '../../../components/ui/TextButton'
 import DefaultLayout from '../../../components/layout/DefaultLayout'
-import tokenService from '../../../services/token.service'
 
 interface IData {
   username: string

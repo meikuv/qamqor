@@ -6,6 +6,7 @@ import CharityList from '../../screens/home/components/charity/CharityList'
 import Charity from '../../screens/home/components/charity'
 import VolunteerList from '../../screens/home/components/volunteer/VolunteerList'
 import Volunteer from '../../screens/home/components/volunteer'
+import Search from '../../screens/search'
 
 const Stack = createNativeStackNavigator()
 
@@ -58,6 +59,7 @@ const HomeStack = () => {
           headerTintColor: 'rgb(2, 132, 199)',
         }}
       />
+      <Stack.Screen options={{ headerShown: false }} name="Search" component={Search} />
     </Stack.Navigator>
   )
 }

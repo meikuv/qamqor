@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import { View, Text, Pressable, ImageBackground } from 'react-native'
 import { useTranslation } from 'react-i18next'
 import { useAssistance } from '../../../../hooks/useAssistance'
@@ -9,7 +9,17 @@ import DefaultLayout from '../../../../components/layout/DefaultLayout'
 const VolunteerList: FC = () => {
   const { t } = useTranslation()
   const navigation = useNavigation()
-  const { volunteerList } = useAssistance()
+  const { volunteerList, getAllVolunteer } = useAssistance()
+  const [refreshing, setRefreshing] = useState(false)
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    try {
+      await getAllVolunteer()
+    } finally {
+      setRefreshing(false)
+    }
+  }
 
   const VolunteerItem: FC<{ volunteer: IAssistance }> = ({ volunteer }) => {
     return (
@@ -36,7 +46,12 @@ const VolunteerList: FC = () => {
   }
 
   return (
-    <DefaultLayout isScrollView={true} bgColor="bg-white">
+    <DefaultLayout
+      isScrollView={true}
+      bgColor="bg-white"
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+    >
       <View className="w-full pt-2 px-4">
         {volunteerList?.length !== 0 &&
           volunteerList?.map((volunteer) => (

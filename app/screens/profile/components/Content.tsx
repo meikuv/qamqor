@@ -1,6 +1,6 @@
 import React from 'react'
 import { useTranslation } from 'react-i18next'
-import { Pressable, ScrollView, Text, View } from 'react-native'
+import { Pressable, Text, View } from 'react-native'
 import { useAuth } from '../../../hooks/useAuth'
 import { useNavigation } from '@react-navigation/native'
 import TextLink from '../../../components/ui/TextLink'
@@ -50,6 +50,10 @@ const Content = () => {
     },
   ]
 
+  const handleLogout = () => {
+    logout()
+  }
+
   return (
     <DefaultLayout bgColor="bg-white mt-4">
       <View className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-400 px-5 pt-4">
@@ -66,7 +70,7 @@ const Content = () => {
             onPress={() => navigation.navigate(other.navigate)}
           />
         ))}
-        <Pressable onPress={logout} className="flex-row items-center mb-4">
+        <Pressable onPress={handleLogout} className="flex-row items-center mb-4">
           <Icon name="power" size={25} color={'red'} style={{ marginRight: 15 }} />
           <Text className="text-base text-red-500">{t('logout.title')}</Text>
         </Pressable>

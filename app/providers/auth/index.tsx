@@ -1,14 +1,14 @@
 import React, { createContext, useMemo, useState, useRef, useEffect, FC, ReactNode } from 'react'
 import { AppState } from 'react-native'
 import { showToast } from '../../components/toast'
+import { useTranslation } from 'react-i18next'
 import authService from '../../services/auth.service'
 import userService from '../../services/user.service'
 import tokenService from '../../services/token.service'
-import { useTranslation } from 'react-i18next'
 
 interface IContext {
   isLoading: boolean
-  isLoggedIn: boolean
+  token: string | null | undefined
   login: (username: string, password: string) => Promise<void>
   register: (username: string, email: string, password: string) => Promise<void>
   verification: (email: string, code: string) => Promise<void>
@@ -24,7 +24,7 @@ export const AuthContext = createContext<IContext>({} as IContext)
 export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const { t } = useTranslation()
   const appState = useRef(AppState.currentState)
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false)
+  const [token, setToken] = useState<string | undefined | null>(null)
   const [appStateVisible, setAppStateVisible] = useState(appState.current)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -33,7 +33,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     try {
       const { data } = await authService.login(username, password)
       await tokenService.setCredentials(data)
-      setIsLoggedIn(true)
+      setToken(data.accessToken)
       showToast('success', t('login.loginButton'), t('login.loginSuccess'))
       return data
     } catch (error: any) {
@@ -92,19 +92,29 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     try {
       const { data } = await userService.logout()
       await tokenService.clearCredentials()
-      setIsLoggedIn(false)
+      setToken(null)
       showToast('success', t('logout.title'), t('logout.logoutSuccess'))
       return data
     } catch (error: any) {
-      if (error.response) {
-        const errorMessage = error.response.data.message
-        showToast('error', t('logout.title'), errorMessage)
-      } else {
-        showToast('error', t('logout.title'), 'Ошибка сети')
-      }
-      throw new Error('Logout error')
+      await tokenService.clearCredentials()
+      setToken(null)
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    loadStorageToken()
+  }, [])
+
+  async function loadStorageToken(): Promise<void> {
+    try {
+      const storageToken = await tokenService.getLocalAccessToken()
+      if (storageToken) {
+        setToken(storageToken)
+      }
+    } catch (error) {
+    } finally {
     }
   }
 
@@ -126,13 +136,13 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
   const value = useMemo(
     () => ({
       isLoading: isLoading,
-      isLoggedIn: isLoggedIn,
+      token: token,
       login: login,
       register: register,
       logout: logout,
       verification: verification,
     }),
-    [isLoading]
+    [isLoading, token]
   )
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>

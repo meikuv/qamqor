@@ -8,7 +8,7 @@ interface IContext {
   user: IUser
   connectedUser: () => Promise<IUser | undefined>
   updateUser: (user: IUser) => Promise<void>
-  uploadImage: (uri: string) => Promise<IUser>
+  uploadImage: (uri: string) => Promise<IUser | undefined>
   changePassword: (passwords: IChangePassword) => Promise<void>
 }
 
@@ -30,7 +30,6 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
       setUser(data)
       return data
     } catch (error) {
-      throw new Error('Get connected user data error')
     } finally {
       setIsLoading(false)
     }
@@ -44,7 +43,6 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
       setUser(data)
       return data
     } catch (error) {
-      throw new Error('Update user data error')
     } finally {
       setIsLoading(false)
     }
@@ -58,7 +56,6 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
       setUser(data)
       return data
     } catch (error) {
-      throw new Error('Image user error')
     } finally {
       setIsLoading(false)
     }
@@ -77,7 +74,6 @@ export const UserProvider: FC<UserProviderProps> = ({ children }) => {
       } else {
         showToast('error', t('changePassword.title'), t('login.loginError'))
       }
-      throw new Error('Change user password error')
     } finally {
       setIsLoading(false)
     }

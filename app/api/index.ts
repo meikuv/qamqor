@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-import tokenService from '../services/token.service'
+import tokenService, { ICredentials } from '../services/token.service'
 
 const axiosInstance: AxiosInstance = axios.create({
   withCredentials: true,
@@ -11,10 +11,9 @@ const axiosInstance: AxiosInstance = axios.create({
 
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const accessToken = await tokenService.getLocalAccesToken()
-    console.log(accessToken)
+    const accessToken = await tokenService.getLocalAccessToken()
     console.log(config.url)
-    if (accessToken && config.url !== '/auth/account/login') {
+    if (accessToken && !config.url?.startsWith('/auth/account')) {
       config.headers.Authorization = `Bearer ${accessToken}`
     }
     return config
@@ -31,22 +30,32 @@ axiosInstance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config as AxiosRequestConfig
 
-    if (error.response?.status === 401 && originalRequest.url !== '/auth/account/login') {
-      try {
-        const newAccessToken = await tokenService.refreshAccessToken()
-        if (newAccessToken !== null) {
-          originalRequest.headers = originalRequest.headers || {}
-          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
-
-          return axiosInstance(originalRequest)
-        }
-      } catch (error) {
-        console.log('Error refreshing access token: ', error)
+    if (error.response?.status === 401 && !originalRequest.url?.startsWith('/auth/account')) {
+      console.log('refresh')
+      const newAccessToken = await refreshAccessToken()
+      if (newAccessToken !== null) {
+        originalRequest.headers = originalRequest.headers || {}
+        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
+        return axiosInstance(originalRequest)
       }
     }
-
     return Promise.reject(error)
   }
 )
+
+const refreshAccessToken = async (): Promise<string | null> => {
+  const refreshToken = await tokenService.getLocalRefreshToken()
+  try {
+    const { data } = await axiosInstance.post<ICredentials>('/auth/account/refresh-token', {
+      refreshToken,
+    })
+    await tokenService.setCredentials(data)
+    return data.accessToken
+  } catch (error) {
+    console.log('request')
+    await tokenService.clearCredentials()
+    return null
+  }
+}
 
 export default axiosInstance

@@ -2,14 +2,10 @@ import React, { FC } from 'react'
 import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import Icon from 'react-native-vector-icons/Ionicons'
-import SafeLayout from '../../components/layout/SafeLayout'
 import Field from '../../components/ui/Field'
-import OverlayImage from './components/OverlayImage'
 import TextLink from '../../components/ui/TextLink'
 import VideoPlayer from './components/VideoPlayer'
 import DefaultLayout from '../../components/layout/DefaultLayout'
-import UserImage from '../../components/UserImage'
 
 const Home: FC = () => {
   const { t } = useTranslation()
@@ -31,12 +27,12 @@ const Home: FC = () => {
   ]
 
   return (
-    <DefaultLayout isScrollView={true} bgColor="bg-white">
-      <View className="w-full h-full">
+    <DefaultLayout isScrollView={true} refreshing={false} bgColor="bg-white">
+      <View className="flex-1">
         <View>
           <ImageBackground
             source={require('../../../assets/heart.jpeg')}
-            className="w-full h-52"
+            className="w-full h-48"
             imageStyle={{ borderRadius: 12 }}
           />
           <View className="absolute inset-0 w-full h-full bg-gray-900 opacity-50 rounded-xl"></View>
@@ -54,7 +50,7 @@ const Home: FC = () => {
             </Pressable>
           </View>
         </View>
-        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-500 my-5 mx-2 px-4 pt-4">
+        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-500 my-3 mx-2 px-4 pt-4">
           {links.map((link) => (
             <TextLink
               key={link.key}
@@ -65,7 +61,7 @@ const Home: FC = () => {
           ))}
         </View>
         <VideoPlayer />
-        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-500 my-5 mx-2 px-4 pt-4">
+        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-400 mt-3 mb-5 mx-2 px-4 pt-4">
           {markers.map((marker) => (
             <TextLink
               key={marker.key}

@@ -29,14 +29,14 @@ const Charity: FC<ICharityProps> = ({ route }) => {
   return (
     <DefaultLayout isScrollView={true} bgColor="bg-white">
       <View className="flex-1">
-        <View className="h-32 overflow-hidden">
+        <View className="h-36 overflow-hidden">
           <Image
             source={require('../../../../../assets/hands.jpg')}
             className="w-full h-full rounded-b-xl"
             resizeMode="cover"
           />
         </View>
-        <View className="flex justify-center items-center -mt-14">
+        <View className="flex justify-center items-center -mt-20">
           <View className="bg-white p-2 rounded-full">
             <Image source={{ uri: charity.photoUrl }} className="h-32 w-32 bg-white rounded-full" />
           </View>
@@ -55,7 +55,9 @@ const Charity: FC<ICharityProps> = ({ route }) => {
             <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4">
               <Text className="text-base font-medium mb-1">{t('charity.direct')}</Text>
               {charity.directions.map((direction) => (
-                <Text key={direction.id} className="text-xs">{`\u2023 ${locale === 'ru' ? direction.titleRU : direction.titleKZ}`}</Text>
+                <Text key={direction.id} className="text-xs">{`\u2023 ${
+                  locale === 'ru' ? direction.titleRU : direction.titleKZ
+                }`}</Text>
               ))}
             </View>
           )}

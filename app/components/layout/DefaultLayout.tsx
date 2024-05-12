@@ -4,9 +4,8 @@ import { View, ScrollView, RefreshControl } from 'react-native'
 interface IDefaultLayout {
   children: ReactNode
   isScrollView?: boolean
-  paddingTop?: number
   bgColor?: string
-  refreshControl?: ReactNode
+  paddingTop?: number
   refreshing?: boolean
   onRefresh?: () => void
 }
@@ -16,14 +15,19 @@ const DefaultLayout: FC<IDefaultLayout> = ({
   isScrollView,
   bgColor,
   paddingTop,
-  refreshControl,
   refreshing,
   onRefresh,
 }) => {
   return (
     <View className={`w-full h-full ${bgColor} ${paddingTop}`}>
       {isScrollView ? (
-        <ScrollView refreshControl={refreshControl} showsVerticalScrollIndicator={false}>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={refreshing === true ? true : false} onRefresh={onRefresh} />
+          }
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ flexGrow: 1 }}
+        >
           {children}
         </ScrollView>
       ) : (

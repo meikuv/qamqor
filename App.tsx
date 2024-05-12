@@ -9,8 +9,8 @@ import Toast from 'react-native-toast-message'
 
 export default function App() {
   return (
-    <I18nProvider>
-      <AuthProvider>
+    <AuthProvider>
+      <I18nProvider>
         <UserProvider>
           <AssistanceProvider>
             <SafeAreaProvider>
@@ -20,7 +20,7 @@ export default function App() {
             </SafeAreaProvider>
           </AssistanceProvider>
         </UserProvider>
-      </AuthProvider>
-    </I18nProvider>
+      </I18nProvider>
+    </AuthProvider>
   )
 }

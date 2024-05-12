@@ -14,15 +14,15 @@ const CharityList: FC = () => {
   const [typeKey, setTypeKey] = useState<any>(locale)
   const [charityListByType, setCharityListByType] = useState<{ [key: string]: IAssistance[] }>({})
   const [collapsed, setCollapsed] = useState<{ [key: string]: boolean }>({})
-
   const [refreshing, setRefreshing] = useState(false)
 
   const onRefresh = async () => {
     setRefreshing(true)
-    await getAllCharity()
-    setTimeout(() => {
+    try {
+      await getAllCharity()
+    } finally {
       setRefreshing(false)
-    }, 2000)
+    }
   }
 
   useEffect(() => {
@@ -88,8 +88,10 @@ const CharityList: FC = () => {
 
   return (
     <DefaultLayout
+      isScrollView={true}
       bgColor="bg-white"
-      refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
+      refreshing={refreshing}
+      onRefresh={onRefresh}
     >
       {Object.keys(charityListByType).map((type) => (
         <View className="w-full pt-2 px-4" key={type}>

@@ -13,28 +13,26 @@ import { useUser } from '../hooks/useUser'
 const Stack = createNativeStackNavigator()
 
 const Navigation: FC = () => {
-  const { isLoggedIn } = useAuth()
+  const { token } = useAuth()
   const { connectedUser } = useUser()
   const { getAllCharity, getAllVolunteer } = useAssistance()
-  const [token, setToken] = useState<any>(null)
+  const [tokenStorage, setTokenStorage] = useState<any>(null)
   const [isSpalshLoading, setSplashIsloading] = useState<boolean>(true)
 
-  const initial = async () => {
-    setSplashIsloading(true)
-    try {
-      const accessToken = await tokenService.getLocalAccesToken()
-      setToken(accessToken)
-      if (accessToken) {
-        await connectedUser()
-        await getAllCharity()
-        await getAllVolunteer()
-      }
-    } finally {
-      setSplashIsloading(false)
-    }
-  }
-
   useEffect(() => {
+    const initial = async () => {
+      setSplashIsloading(true)
+      try {
+        await connectedUser()
+        if (token) {
+          await getAllCharity()
+          await getAllVolunteer()
+        }
+      } finally {
+        setSplashIsloading(false)
+      }
+    }
+
     initial()
   }, [])
 
@@ -49,15 +47,8 @@ const Navigation: FC = () => {
       >
         {isSpalshLoading ? (
           <Stack.Screen options={{ headerShown: false }} name="Splash" component={Splash} />
-        ) : isLoggedIn || token ? (
-          <>
-            <Stack.Screen
-              options={{ headerShown: false }}
-              name="Private"
-              component={PrivateStack}
-            />
-            <Stack.Screen options={{ headerShown: false }} name="Search" component={Search} />
-          </>
+        ) : token ? (
+          <Stack.Screen options={{ headerShown: false }} name="Private" component={PrivateStack} />
         ) : (
           <Stack.Screen options={{ headerShown: false }} name="Auth" component={AuthStack} />
         )}
