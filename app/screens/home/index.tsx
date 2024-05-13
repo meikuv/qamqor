@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { ImageBackground, Pressable, ScrollView, Text, View } from 'react-native'
+import { ImageBackground, Pressable, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
 import Field from '../../components/ui/Field'
@@ -18,7 +18,7 @@ const Home: FC = () => {
   const links = [
     { key: 1, title: t('home.charityTitle'), icon: 'hand-heart', navigate: 'CharityList' },
     { key: 2, title: t('home.volunteerTitle'), icon: 'account-heart', navigate: 'VolunteerList' },
-    { key: 3, title: t('home.lawyerTitle'), icon: 'account-tie-outline', navigate: 'LawyerList' },
+    { key: 3, title: t('home.lawyerTitle'), icon: 'account-tie-outline', navigate: 'Law' },
   ]
   const markers = [
     { key: 1, title: t('home.charityCenter'), iconColor: 'red' },

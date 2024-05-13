@@ -3,6 +3,7 @@ import { TextInput, View, Text } from 'react-native'
 import IconButton from './IconButton'
 
 interface IField {
+  ref?: any
   onPress?: () => void
   onChange?: (value: string) => void
   onClose?: () => void
@@ -19,6 +20,7 @@ interface IField {
 }
 
 const Field: FC<IField> = ({
+  ref,
   onPress,
   onChange,
   onClose,
@@ -38,6 +40,7 @@ const Field: FC<IField> = ({
       {label && <Text className="text-sky-600 text-md ml-2 mt-2">{label}:</Text>}
       <View className="flex-row items-center">
         <TextInput
+          ref={ref}
           onPressIn={onPress}
           onChangeText={onChange}
           placeholder={placeholder}

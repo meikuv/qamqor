@@ -1,10 +1,10 @@
 import React, { FC, useState } from 'react'
 import { View, Text, Pressable, ImageBackground } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { useAssistance } from '../../../../hooks/useAssistance'
-import { IAssistance } from '../../../../services/assistance.service'
+import { useAssistance } from '../../../hooks/useAssistance'
+import { IAssistance } from '../../../services/assistance.service'
 import { useNavigation } from '@react-navigation/native'
-import DefaultLayout from '../../../../components/layout/DefaultLayout'
+import DefaultLayout from '../../../components/layout/DefaultLayout'
 
 const VolunteerList: FC = () => {
   const { t } = useTranslation()
@@ -24,7 +24,7 @@ const VolunteerList: FC = () => {
   const VolunteerItem: FC<{ volunteer: IAssistance }> = ({ volunteer }) => {
     return (
       <Pressable
-        onPress={() => navigation.navigate('Volunteer', { volunteer })}
+        onPress={() => navigation.navigate('Assistance', { assistance: volunteer, imageIndex: 1 })}
         className="w-full h-max mb-2 bg-white p-2 rounded-xl shadow-xl shadow-gray-400"
       >
         <View className="flex-row w-full h-max items-center">

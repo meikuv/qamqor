@@ -1,12 +1,13 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { useTranslation } from 'react-i18next'
+import 'react-native-gesture-handler'
 import Home from '../../screens/home'
-import CharityList from '../../screens/home/components/charity/CharityList'
-import Charity from '../../screens/home/components/charity'
-import VolunteerList from '../../screens/home/components/volunteer/VolunteerList'
-import Volunteer from '../../screens/home/components/volunteer'
+import CharityList from '../../screens/home/components/CharityList'
+import VolunteerList from '../../screens/home/components/VolunteerList'
 import Search from '../../screens/search'
+import Assistance from '../../components/Assistance'
+import Law from '../../screens/law'
 
 const Stack = createNativeStackNavigator()
 
@@ -33,8 +34,8 @@ const HomeStack = () => {
         }}
       />
       <Stack.Screen
-        name="Charity"
-        component={Charity}
+        name="Assistance"
+        component={Assistance}
         options={{
           headerTitle: '',
           headerTransparent: true,
@@ -51,11 +52,11 @@ const HomeStack = () => {
         }}
       />
       <Stack.Screen
-        name="Volunteer"
-        component={Volunteer}
+        name="Law"
+        component={Law}
         options={{
-          headerTitle: '',
-          headerTransparent: true,
+          headerTitle: `${t('home.lawyerTitle')}`,
+          headerTransparent: false,
           headerTintColor: 'rgb(2, 132, 199)',
         }}
       />

@@ -5,9 +5,8 @@ export type TypeRootStackParamList = {
   Verification: any
   Home: undefined
   CharityList: any
-  Charity: any
   VolunteerList: any
-  Volunteer: any
+  Assistance: any
   Map: any
   Search: undefined
   Support: undefined

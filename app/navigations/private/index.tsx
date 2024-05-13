@@ -1,6 +1,7 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { useTranslation } from 'react-i18next'
+import 'react-native-gesture-handler'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import Map from '../../screens/map'
 import Support from '../../screens/support'

@@ -1,11 +1,11 @@
 import React, { FC, useEffect, useState } from 'react'
 import { View, Text, Pressable, ImageBackground, RefreshControl } from 'react-native'
-import { useAssistance } from '../../../../hooks/useAssistance'
-import { IAssistance } from '../../../../services/assistance.service'
+import { useAssistance } from '../../../hooks/useAssistance'
+import { IAssistance } from '../../../services/assistance.service'
 import { useNavigation } from '@react-navigation/native'
-import { useI18n } from '../../../../hooks/useI18n'
-import DefaultLayout from '../../../../components/layout/DefaultLayout'
-import IconButton from '../../../../components/ui/IconButton'
+import { useI18n } from '../../../hooks/useI18n'
+import DefaultLayout from '../../../components/layout/DefaultLayout'
+import IconButton from '../../../components/ui/IconButton'
 
 const CharityList: FC = () => {
   const navigation = useNavigation()
@@ -51,7 +51,7 @@ const CharityList: FC = () => {
   const CharityItem: FC<{ charity: IAssistance }> = ({ charity }) => {
     return (
       <Pressable
-        onPress={() => navigation.navigate('Charity', { charity })}
+        onPress={() => navigation.navigate('Assistance', { assistance: charity, imageIndex: 0 })}
         className="w-full h-max mb-2 bg-white p-2 rounded-xl shadow-xl shadow-gray-400"
       >
         <View className="flex-row w-full h-max items-center">

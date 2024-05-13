@@ -6,6 +6,7 @@ import { UserProvider } from './app/providers/user'
 import { AssistanceProvider } from './app/providers/assistance'
 import Navigation from './app/navigations'
 import Toast from 'react-native-toast-message'
+import 'react-native-gesture-handler'
 
 export default function App() {
   return (

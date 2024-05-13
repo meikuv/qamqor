@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { FC } from 'react'
 import SafeLayout from '../../components/layout/SafeLayout'
 import SearchField from './SearchField'
 import { View } from 'react-native'
@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native'
 
 const Search: FC = () => {
   const navigation = useNavigation()
-  const [search, setSearch] = useState<string>('')
 
   return (
     <SafeLayout style="bg-white">

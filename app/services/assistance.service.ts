@@ -5,6 +5,7 @@ export interface IAssistance {
   name: string
   typeKZ: string
   typeRU: string
+  postUrl: string
   photoUrl: string
   descriptionKZ: string
   descriptionRU: string
@@ -20,6 +21,7 @@ export interface IContact {
   address: string
   phone: string
   email: string
+  instagram: string
   websiteUrl: string
 }
 
@@ -51,6 +53,16 @@ export interface IRequisites {
   currency: string
 }
 
+export interface ILawyer {
+  id: number
+  name: string
+  photoUrl: string
+  workExperience: number
+  directRU: string
+  directKZ: string
+  contact: IContact
+}
+
 class AssistanceService {
   async getAllCharity() {
     return http.get<IAssistance[]>('/assistance/charity/getAll')
@@ -58,6 +70,14 @@ class AssistanceService {
 
   async getAllVolunteer() {
     return http.get<IAssistance[]>('/assistance/volunteer/getAll')
+  }
+
+  async getAllLawyer() {
+    return http.get<ILawyer[]>('/assistance/lawyer/getAll')
+  }
+
+  async searchAssistance(endPoint: string, name: string) {
+    return http.get<any>(`/assistance/${endPoint}/search/${name}`)
   }
 }
 

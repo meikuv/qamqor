@@ -1,5 +1,6 @@
 import React from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import 'react-native-gesture-handler'
 import Login from '../../screens/auth/login'
 import Register from '../../screens/auth/register'
 import Verification from '../../screens/auth/verification'

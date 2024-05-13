@@ -1,32 +1,31 @@
 import React, { FC, useEffect, useState } from 'react'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { NavigationContainer } from '@react-navigation/native'
+import { useAssistance } from '../hooks/useAssistance'
+import { useUser } from '../hooks/useUser'
 import { useAuth } from '../hooks/useAuth'
-import tokenService from '../services/token.service'
+import 'react-native-gesture-handler'
 import Splash from '../screens/splash'
 import AuthStack from './auth'
 import PrivateStack from './private'
-import Search from '../screens/search'
-import { useAssistance } from '../hooks/useAssistance'
-import { useUser } from '../hooks/useUser'
 
 const Stack = createNativeStackNavigator()
 
 const Navigation: FC = () => {
   const { token } = useAuth()
   const { connectedUser } = useUser()
-  const { getAllCharity, getAllVolunteer } = useAssistance()
-  const [tokenStorage, setTokenStorage] = useState<any>(null)
+  const { getAllCharity, getAllVolunteer, getAllLawyer } = useAssistance()
   const [isSpalshLoading, setSplashIsloading] = useState<boolean>(true)
 
   useEffect(() => {
     const initial = async () => {
       setSplashIsloading(true)
       try {
-        await connectedUser()
         if (token) {
+          await connectedUser()
           await getAllCharity()
           await getAllVolunteer()
+          await getAllLawyer()
         }
       } finally {
         setSplashIsloading(false)
