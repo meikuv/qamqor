@@ -5,7 +5,11 @@ import Field from '../../components/ui/Field'
 import debounce from 'lodash.debounce'
 import assistanceService from '../../services/assistance.service'
 
-const SearchField = () => {
+const SearchField = ({
+  getResults,
+}: {
+  getResults: (items: any[], type: string | null) => void
+}) => {
   const { t } = useTranslation()
   const opacityAnim = useRef(new Animated.Value(0)).current
   const [items, setItems] = useState<any>([])
@@ -56,7 +60,6 @@ const SearchField = () => {
       setItems([])
       return
     }
-    console.log(items)
   }
 
   const searchByName = async (type: string, name: string) => {
@@ -79,6 +82,10 @@ const SearchField = () => {
       debouncedResults.cancel()
     }
   })
+
+  useEffect(() => {
+    getResults(items, searchType)
+  }, [items, searchType, getResults])
 
   return (
     <View className="flex-1 ml-2">

@@ -1,11 +1,19 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { useWindowDimensions, View, Text, TouchableOpacity } from 'react-native'
 import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
 import Laws from './components/Laws'
 import Lawyers from './components/Lawyers'
 
-const Law = () => {
+interface ILawsProps {
+  route?: {
+    params: {
+      scrollToIndex: number
+    }
+  }
+}
+
+const Law: FC<ILawsProps> = ({ route }) => {
   const { t } = useTranslation()
   const layout = useWindowDimensions()
   const [index, setIndex] = useState(0)
@@ -16,14 +24,14 @@ const Law = () => {
     { key: 'administrative', title: 'administrative' },
   ])
 
-  const renderScene = ({ route }) => {
-    switch (route.key) {
+  const renderScene = ({ route: routing }) => {
+    switch (routing.key) {
       case 'lawyers':
-        return <Lawyers />
+        return <Lawyers scrollToIndex={route?.params.scrollToIndex} />
       case 'criminal':
       case 'civil':
       case 'administrative':
-        return <Laws type={route.key} />
+        return <Laws type={routing.key} />
       default:
         return null
     }
