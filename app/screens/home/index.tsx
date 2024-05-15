@@ -41,14 +41,11 @@ const Home: FC = () => {
               {image[0].text}
             </Text>
           </View>
-          <View className="w-full absolute -top-10 left-0 right-0 bottom-10 flex-1 flex-row justify-center items-center">
+          <View className="w-full absolute -top-9 left-0 right-0 bottom-10 flex-1 flex-row justify-center items-center">
             <Pressable className="w-11/12" onPress={() => navigation.navigate('Search')}>
-              <Field
-                placeholder={t('home.search')}
-                shadow={true}
-                color="bg-white"
-                isDisabled={true}
-              />
+              <View style={{ backgroundColor: '#FFFFE0' }} className="p-4 rounded-xl">
+                <Text style={{ color: '#0f5645' }}>{t('home.search')}</Text>
+              </View>
             </Pressable>
           </View>
         </View>

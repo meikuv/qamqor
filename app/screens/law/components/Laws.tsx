@@ -1,28 +1,66 @@
-import React, { FC } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import React, { FC, useState } from 'react'
+import { View, Text } from 'react-native'
+import { ILaw } from '../../../services/assistance.service'
+import { useAssistance } from '../../../hooks/useAssistance'
 import Collapsible from '../../../components/Collapsible'
 import DefaultLayout from '../../../components/layout/DefaultLayout'
 
 interface ILawsProps {
-  type: string
+  law: ILaw[]
 }
 
-const Laws: FC<ILawsProps> = ({ type }) => {
+const Laws: FC<ILawsProps> = ({ law }) => {
+  const { getAllLaw } = useAssistance()
+  const [refreshing, setRefreshing] = useState(false)
+
+  const onRefresh = async () => {
+    setRefreshing(true)
+    try {
+      await getAllLaw()
+    } finally {
+      setRefreshing(false)
+    }
+  }
+
   return (
-    <DefaultLayout isScrollView={false} bgColor="bg-white">
-      <View className="flex bg-white rounded-xl shadow-xl shadow-gray-400 mx-2 my-2">
-        <Collapsible title="Kulmanov Meirzhan">
-          <Text>My name is Meirzhan and I am 22 years old.</Text>
-        </Collapsible>
-        <View className="flex-1 border-b-[1px] border-sky-400 mx-2 mt-2"></View>
-        <Collapsible title="Kulmanov Meirzhan">
-          <Text>My name is Meirzhan and I am 22 years old.</Text>
-        </Collapsible>
-        <View className="flex-1 border-b-[1px] border-sky-400 mx-2 mt-2"></View>
-        <Collapsible title="Kulmanov Meirzhan">
-          <Text>My name is Meirzhan and I am 22 years old.</Text>
-        </Collapsible>
-        <View className="flex-1 border-b-[1px] border-sky-400 mx-2 mt-2"></View>
+    <DefaultLayout
+      isScrollView={true}
+      refreshing={refreshing}
+      onRefresh={onRefresh}
+      bgColor="bg-white"
+    >
+      <View
+        style={{ backgroundColor: '#FFFFE0' }}
+        className="flex bg-white rounded-xl shadow-xl shadow-gray-400 mx-2 my-2"
+      >
+        {law &&
+          law?.map((item, index) => (
+            <View key={item.id} className={`${index !== law.length - 1 ? 'null' : 'mb-2'}`}>
+              <Collapsible title={item.title}>
+                {item.lawArticles?.map((articles) => (
+                  <View
+                    style={{ backgroundColor: '#DEB887' }}
+                    className="flex-1 rounded-xl mt-2 p-2"
+                  >
+                    <Text style={{ color: '#0f5645' }} className="flex-wrap text-xs font-bold">
+                      {articles.title}
+                    </Text>
+                    <View className="mt-1">
+                      {articles.descriptions.map((desc) => (
+                        <Text className="text-xs">{`\u2023 ${desc.title}`}</Text>
+                      ))}
+                    </View>
+                  </View>
+                ))}
+              </Collapsible>
+              {index !== law.length - 1 && (
+                <View
+                  style={{ borderBottomWidth: 2, borderBottomColor: '#0f5645' }}
+                  className="flex-1 mx-4 mt-2"
+                ></View>
+              )}
+            </View>
+          ))}
       </View>
     </DefaultLayout>
   )

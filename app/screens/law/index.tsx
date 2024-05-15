@@ -4,6 +4,7 @@ import { TabView } from 'react-native-tab-view'
 import { useTranslation } from 'react-i18next'
 import Laws from './components/Laws'
 import Lawyers from './components/Lawyers'
+import { useAssistance } from '../../hooks/useAssistance'
 
 interface ILawsProps {
   route?: {
@@ -15,6 +16,7 @@ interface ILawsProps {
 
 const Law: FC<ILawsProps> = ({ route }) => {
   const { t } = useTranslation()
+  const { lawList } = useAssistance()
   const layout = useWindowDimensions()
   const [index, setIndex] = useState(0)
   const [routes] = useState([
@@ -24,6 +26,32 @@ const Law: FC<ILawsProps> = ({ route }) => {
     { key: 'administrative', title: 'administrative' },
   ])
 
+  const groupLawsByType = (laws: any) => {
+    const lawsByType = {
+      criminal: [],
+      civil: [],
+      administrative: [],
+    }
+    laws.forEach((law: any) => {
+      switch (law.type) {
+        case 'Уголовное право':
+          lawsByType.criminal.push(law)
+          break
+        case 'Гражданское право':
+          lawsByType.civil.push(law)
+          break
+        case 'Административное право':
+          lawsByType.administrative.push(law)
+          break
+        default:
+          break
+      }
+    })
+    return lawsByType
+  }
+
+  const lawsByType = groupLawsByType(lawList)
+
   const renderScene = ({ route: routing }) => {
     switch (routing.key) {
       case 'lawyers':
@@ -31,7 +59,7 @@ const Law: FC<ILawsProps> = ({ route }) => {
       case 'criminal':
       case 'civil':
       case 'administrative':
-        return <Laws type={routing.key} />
+        return <Laws law={lawsByType[routing.key]} />
       default:
         return null
     }

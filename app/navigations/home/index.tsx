@@ -28,7 +28,7 @@ const HomeStack = () => {
         name="CharityList"
         component={CharityList}
         options={{
-          headerTitle: `${t('home.charityTitle')}`,
+          title: `${t('home.charityTitle')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },
@@ -38,7 +38,7 @@ const HomeStack = () => {
         name="Assistance"
         component={Assistance}
         options={{
-          headerTitle: '',
+          title: '',
           headerTransparent: true,
           headerTintColor: '#0f5645',
         }}
@@ -47,7 +47,7 @@ const HomeStack = () => {
         name="VolunteerList"
         component={VolunteerList}
         options={{
-          headerTitle: `${t('home.volunteerTitle')}`,
+          title: `${t('home.volunteerTitle')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },
@@ -57,7 +57,7 @@ const HomeStack = () => {
         name="Law"
         component={Law}
         options={{
-          headerTitle: `${t('home.lawyerTitle')}`,
+          title: `${t('home.lawyerTitle')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },

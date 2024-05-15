@@ -65,6 +65,7 @@ export interface ILawyer {
 
 export interface ILaw {
   id: number
+  type: string
   title: string
   lawArticles: ILawArticles[]
 }

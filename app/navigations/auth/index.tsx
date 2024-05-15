@@ -21,18 +21,18 @@ const AuthStack = () => {
         name="Register"
         component={Register}
         options={{
-          headerTitle: '',
+          title: '',
           headerTransparent: true,
-          headerTintColor: '#3b82f6',
+          headerTintColor: '#0f5645',
         }}
       />
       <Stack.Screen
         name="Verification"
         component={Verification}
         options={{
-          headerTitle: '',
+          title: '',
           headerTransparent: true,
-          headerTintColor: '#3b82f6',
+          headerTintColor: '#0f5645',
         }}
       />
     </Stack.Navigator>

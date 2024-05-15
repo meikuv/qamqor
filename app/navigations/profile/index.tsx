@@ -31,7 +31,7 @@ const ProfileStack = () => {
         name="ProfileUpdate"
         component={Update}
         options={{
-          headerTitle: `${t('profileUpdate.title')}`,
+          title: `${t('profileUpdate.title')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },
@@ -41,7 +41,7 @@ const ProfileStack = () => {
         name="Settings"
         component={Settings}
         options={{
-          headerTitle: `${t('settings.title')}`,
+          title: `${t('settings.title')}`,
           headerTransparent: true,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },
@@ -51,7 +51,7 @@ const ProfileStack = () => {
         name="ChangePassword"
         component={ChangePassword}
         options={{
-          headerTitle: `${t('changePassword.title')}`,
+          title: `${t('changePassword.title')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },
@@ -62,7 +62,7 @@ const ProfileStack = () => {
         name="ContactUs"
         component={ContactUs}
         options={{
-          headerTitle: `${t('contact.title')}`,
+          title: `${t('contact.title')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },

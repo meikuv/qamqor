@@ -1,7 +1,3 @@
-import { StyleSheet, Platform, StatusBar } from 'react-native'
+import { Platform } from 'react-native'
 
-export default StyleSheet.create({
-  AndroidSafeArea: {
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
-  },
-})
+export const shadowLevel = `${Platform.OS === 'android' ? 'shadow-gray-600' : 'shadow-gray-200'}`
