@@ -20,7 +20,7 @@ const Login: FC = () => {
   const navigation = useNavigation()
   const { login, isLoading } = useAuth()
   const { connectedUser } = useUser()
-  const { getAllCharity, getAllVolunteer } = useAssistance()
+  const { getAllCharity, getAllVolunteer, getAllLawyer } = useAssistance()
 
   const [data, setData] = useState<IData>({ username: '', password: '' })
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
@@ -52,17 +52,18 @@ const Login: FC = () => {
     await connectedUser()
     await getAllCharity()
     await getAllVolunteer()
+    await getAllLawyer()
     setData({} as IData)
   }
 
   return (
-    <DefaultLayout bgColor="bg-white">
+    <DefaultLayout>
       <View className="h-full items-center justify-center">
         {isLoading ? (
           <Loader size="large" color="#3b82f6" />
         ) : (
           <View className="w-10/12">
-            <Text className="text-center text-blue-900 text-2xl font-bold mb-5">
+            <Text style={{ color: '#0f5645' }} className="text-center text-2xl font-bold mb-5">
               {t('login.title')}
             </Text>
             <Field
@@ -73,6 +74,7 @@ const Login: FC = () => {
                 setErrors({ ...errors, username: '' })
               }}
               error={errors.username}
+              shadow={true}
             />
             <Field
               value={data.password}
@@ -82,6 +84,7 @@ const Login: FC = () => {
                 setErrors({ ...errors, password: '' })
               }}
               isSecure={true}
+              shadow={true}
               error={errors.password}
             />
             <TextButton
@@ -90,7 +93,7 @@ const Login: FC = () => {
               isLoading={isLoading}
             />
             <Pressable onPress={() => navigation.navigate('Register')}>
-              <Text className="text-center mt-1 text-gray-400 font-semibold">
+              <Text style={{ color: '#DEB887' }} className="text-center mt-1 font-semibold">
                 {t('login.toRegistration')}
               </Text>
             </Pressable>

@@ -56,17 +56,32 @@ const Content = () => {
 
   return (
     <DefaultLayout bgColor="bg-white mt-4">
-      <View className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-400 px-5 pt-4">
+      <View
+        style={{ backgroundColor: '#FFFFE0' }}
+        className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-200 px-5 pt-4"
+      >
         {links.map((link) => (
-          <TextLink key={link.key} title={link.title} iconName={link.iconName} onPress={() => {}} />
+          <TextLink
+            key={link.key}
+            title={link.title}
+            iconName={link.iconName}
+            textColor="#0f5645"
+            iconColor="#0f5645"
+            onPress={() => {}}
+          />
         ))}
       </View>
-      <View className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-400 px-5 pt-4 mt-4">
+      <View
+        style={{ backgroundColor: '#FFFFE0' }}
+        className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-200 px-5 pt-4 mt-4"
+      >
         {others.map((other) => (
           <TextLink
             key={other.key}
             title={other.title}
             iconName={other.iconName}
+            textColor="#0f5645"
+            iconColor="#0f5645"
             onPress={() => navigation.navigate(other.navigate)}
           />
         ))}

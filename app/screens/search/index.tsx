@@ -27,34 +27,43 @@ const Search: FC = () => {
           <IconButton
             name="arrow-left"
             size={25}
-            color="rgb(2, 132, 199)"
+            color="#0f5645"
             onPress={() => navigation.navigate('Home')}
           />
           <SearchField getResults={debouncedResults} />
         </View>
-        {results.length !== 0 &&
-          results.map((item: any) => (
-            <Pressable
-              key={item.id}
-              className="flex-row items-center bg-white rounded-xl mt-16 mx-6 p-2 shadow-2xl shadow-gray-400"
-              onPress={() => {
-                if (resultType === 'lawyer') {
-                  navigation.navigate('Law', { scrollToIndex: item.id })
-                } else {
-                  navigation.navigate('Assistance', {
-                    assistance: item,
-                    imageIndex: resultType === 'charity' ? 0 : 1,
-                  })
-                }
-              }}
-            >
-              <Image source={{ uri: item.photoUrl }} className="w-14 h-14 rounded-full" />
-              <View className="flex-1 ml-4">
-                <Text className="text-base font-semibold">{item.name}</Text>
-                {item.contact?.email && <Text className="text-sm">{item.contact.email}</Text>}
-              </View>
-            </Pressable>
-          ))}
+        <View className="mt-16">
+          {results.length !== 0 &&
+            results.map((item: any) => (
+              <Pressable
+                key={item.id}
+                style={{ backgroundColor: '#FFFFE0' }}
+                className="flex-row items-center bg-white rounded-xl mb-2 mx-6 p-2 shadow-2xl shadow-gray-500"
+                onPress={() => {
+                  if (resultType === 'lawyer') {
+                    navigation.navigate('Law', { scrollToIndex: item.id })
+                  } else {
+                    navigation.navigate('Assistance', {
+                      assistance: item,
+                      imageIndex: resultType === 'charity' ? 0 : 1,
+                    })
+                  }
+                }}
+              >
+                <Image source={{ uri: item.photoUrl }} className="w-14 h-14 rounded-full" />
+                <View className="flex-1 ml-4">
+                  <Text style={{ color: '#0f5645' }} className="text-base font-semibold">
+                    {item.name}
+                  </Text>
+                  {item.contact?.email && (
+                    <Text style={{ color: '#0f5645' }} className="text-sm">
+                      {item.contact.email}
+                    </Text>
+                  )}
+                </View>
+              </Pressable>
+            ))}
+        </View>
       </View>
     </SafeLayout>
   )

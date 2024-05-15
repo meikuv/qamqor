@@ -1,14 +1,16 @@
 import React, { createContext, useMemo, useState, FC, ReactNode } from 'react'
-import assistanceService, { IAssistance, ILawyer } from '../../services/assistance.service'
+import assistanceService, { IAssistance, ILaw, ILawyer } from '../../services/assistance.service'
 
 interface IContext {
   isLoading: boolean
   charityList: IAssistance[] | undefined
   volunteerList: IAssistance[] | undefined
   lawyerList: ILawyer[] | undefined
+  lawList: ILaw[] | undefined
   getAllCharity: () => Promise<IAssistance[] | undefined>
   getAllVolunteer: () => Promise<IAssistance[] | undefined>
   getAllLawyer: () => Promise<ILawyer[] | undefined>
+  getAllLaw: () => Promise<ILaw[] | undefined>
 }
 
 interface AssistanceProviderProps {
@@ -21,6 +23,7 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
   const [charityList, setCharityList] = useState<IAssistance[]>()
   const [volunteerList, setVolunteerList] = useState<IAssistance[]>()
   const [lawyerList, setLawyerList] = useState<ILawyer[]>()
+  const [lawList, setLawList] = useState<ILaw[]>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getAllCharity = async () => {
@@ -62,15 +65,30 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
     }
   }
 
+  const getAllLaw = async () => {
+    try {
+      setIsLoading(true)
+      const { data } = await assistanceService.getAllLaw()
+      setLawList(data)
+      return data
+    } catch (error) {
+      throw new Error('Get all law error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const value = useMemo(
     () => ({
       isLoading: isLoading,
       charityList: charityList,
       volunteerList: volunteerList,
       lawyerList: lawyerList,
+      lawList: lawList,
       getAllVolunteer: getAllVolunteer,
       getAllCharity: getAllCharity,
       getAllLawyer: getAllLawyer,
+      getAllLaw: getAllLaw,
     }),
     [isLoading]
   )

@@ -6,17 +6,23 @@ interface ITextLinkProps {
   title: string
   iconName: string
   iconColor?: string
+  textColor?: string
   onPress: () => void
 }
 
-const TextLink: FC<ITextLinkProps> = ({ title, iconName, iconColor, onPress }) => {
+const TextLink: FC<ITextLinkProps> = ({ title, iconName, iconColor, textColor, onPress }) => {
   return (
     <Pressable onPress={onPress} className="w-full flex-row items-center justify-between mb-5">
       <View className="flex-row items-center">
-        <Icon name={iconName} size={25} color={iconColor ? iconColor : '#0284C7'} />
-        <Text className="text-base text-sky-700 ml-4">{title}</Text>
+        <Icon name={iconName} size={25} color={iconColor ? iconColor : '#DEB887'} />
+        <Text
+          style={{ color: `${textColor ? textColor : '#DEB887'}` }}
+          className="text-base text-sky-700 ml-4"
+        >
+          {title}
+        </Text>
       </View>
-      <Icon name="chevron-right" size={15} color={iconColor ? iconColor : '#0284C7'} />
+      <Icon name="chevron-right" size={15} color={iconColor ? iconColor : '#DEB887'} />
     </Pressable>
   )
 }

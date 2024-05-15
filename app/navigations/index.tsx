@@ -23,9 +23,9 @@ const Navigation: FC = () => {
       try {
         if (token) {
           await connectedUser()
+          await getAllLawyer()
           await getAllCharity()
           await getAllVolunteer()
-          await getAllLawyer()
         }
       } finally {
         setSplashIsloading(false)

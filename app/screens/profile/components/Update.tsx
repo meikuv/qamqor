@@ -37,6 +37,7 @@ const Update: FC = () => {
               value={data?.[field.key]}
               isSecure={false}
               isDisabled={field.isDisabled}
+              shadow={true}
               label={t(`profileUpdate.${field.key}`)}
             />
           ))}

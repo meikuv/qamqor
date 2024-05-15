@@ -25,7 +25,8 @@ const VolunteerList: FC = () => {
     return (
       <Pressable
         onPress={() => navigation.navigate('Assistance', { assistance: volunteer, imageIndex: 1 })}
-        className="w-full h-max mb-2 bg-white p-2 rounded-xl shadow-xl shadow-gray-400"
+        style={{ backgroundColor: '#FFFFE0' }}
+        className="w-full h-max mb-2 bg-white p-2 rounded-xl shadow-xl shadow-gray-600"
       >
         <View className="flex-row w-full h-max items-center">
           <ImageBackground
@@ -35,9 +36,13 @@ const VolunteerList: FC = () => {
             imageStyle={{ borderRadius: 25 }}
           />
           <View className="flex-1 text-center ml-4">
-            <Text className="text-black text-base font-medium">{volunteer.name}</Text>
+            <Text style={{ color: '#0f5645' }} className="text-base font-medium">
+              {volunteer.name}
+            </Text>
             {volunteer.contact.email && (
-              <Text className="text-xs text-gray-500">{volunteer.contact.email}</Text>
+              <Text style={{ color: '#0f5645' }} className="text-xs">
+                {volunteer.contact.email}
+              </Text>
             )}
           </View>
         </View>

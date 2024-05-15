@@ -19,7 +19,10 @@ const DefaultLayout: FC<IDefaultLayout> = ({
   onRefresh,
 }) => {
   return (
-    <View className={`w-full h-full ${bgColor} ${paddingTop}`}>
+    <View
+      className={`w-full h-full ${bgColor} ${paddingTop}`}
+      style={{ backgroundColor: '#FFFFE0' }}
+    >
       {isScrollView ? (
         <ScrollView
           refreshControl={

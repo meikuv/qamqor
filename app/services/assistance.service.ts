@@ -63,6 +63,23 @@ export interface ILawyer {
   contact: IContact
 }
 
+export interface ILaw {
+  id: number
+  title: string
+  lawArticles: ILawArticles[]
+}
+
+export interface ILawArticles {
+  id: number
+  title: string
+  descriptions: ILawArticleDescription[]
+}
+
+export interface ILawArticleDescription {
+  id: number
+  title: string
+}
+
 class AssistanceService {
   async getAllCharity() {
     return http.get<IAssistance[]>('/assistance/charity/getAll')
@@ -74,6 +91,10 @@ class AssistanceService {
 
   async getAllLawyer() {
     return http.get<ILawyer[]>('/assistance/lawyer/getAll')
+  }
+
+  async getAllLaw() {
+    return http.get<ILaw[]>('/assistance/law/getAll')
   }
 
   async searchAssistance(endPoint: string, name: string) {

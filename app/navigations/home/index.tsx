@@ -30,7 +30,8 @@ const HomeStack = () => {
         options={{
           headerTitle: `${t('home.charityTitle')}`,
           headerTransparent: false,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
       <Stack.Screen
@@ -39,7 +40,7 @@ const HomeStack = () => {
         options={{
           headerTitle: '',
           headerTransparent: true,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
         }}
       />
       <Stack.Screen
@@ -48,7 +49,8 @@ const HomeStack = () => {
         options={{
           headerTitle: `${t('home.volunteerTitle')}`,
           headerTransparent: false,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
       <Stack.Screen
@@ -57,7 +59,8 @@ const HomeStack = () => {
         options={{
           headerTitle: `${t('home.lawyerTitle')}`,
           headerTransparent: false,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
       <Stack.Screen options={{ headerShown: false }} name="Search" component={Search} />

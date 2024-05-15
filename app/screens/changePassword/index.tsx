@@ -44,7 +44,7 @@ const ChangePassword: FC = () => {
   }
 
   return (
-    <View className="w-full h-full items-center bg-white pt-10">
+    <View style={{ backgroundColor: '#FFFFE0' }} className="w-full h-full items-center pt-10">
       <View className="w-10/12">
         {fields.map((field) => (
           <Field
@@ -57,6 +57,7 @@ const ChangePassword: FC = () => {
             label={t(`changePassword.${field.key}`)}
             isSecure={true}
             error={errors?.[field.key]}
+            shadow={true}
           />
         ))}
         <TextButton

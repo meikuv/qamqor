@@ -7,7 +7,7 @@ const Empty = () => {
 
   return (
     <View className="text-center">
-      <Text>{t('empty.title')}</Text>
+      <Text style={{ color: '#0f5645' }}>{t('empty.title')}</Text>
     </View>
   )
 }

@@ -22,14 +22,19 @@ const ProfileStack = () => {
         animation: 'slide_from_right',
       }}
     >
-      <Stack.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+      <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false, headerStyle: { backgroundColor: '#FFFFE0' } }}
+      />
       <Stack.Screen
         name="ProfileUpdate"
         component={Update}
         options={{
           headerTitle: `${t('profileUpdate.title')}`,
           headerTransparent: false,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
       <Stack.Screen
@@ -38,7 +43,8 @@ const ProfileStack = () => {
         options={{
           headerTitle: `${t('settings.title')}`,
           headerTransparent: true,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
       <Stack.Screen
@@ -47,7 +53,8 @@ const ProfileStack = () => {
         options={{
           headerTitle: `${t('changePassword.title')}`,
           headerTransparent: false,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
 
@@ -57,7 +64,8 @@ const ProfileStack = () => {
         options={{
           headerTitle: `${t('contact.title')}`,
           headerTransparent: false,
-          headerTintColor: 'rgb(2, 132, 199)',
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
         }}
       />
     </Stack.Navigator>

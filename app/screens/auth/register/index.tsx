@@ -57,14 +57,14 @@ const Register: FC = () => {
   }
 
   return (
-    <DefaultLayout bgColor="bg-white">
+    <DefaultLayout>
       <View className="mx-5 justify-center items-center h-full">
         <View className="w-10/12">
           {isLoading ? (
             <Loader size="large" color="#3b82f6" />
           ) : (
             <>
-              <Text className="text-center text-blue-900 text-2xl font-bold mb-5">
+              <Text style={{ color: '#0f5645' }} className="text-center text-2xl font-bold mb-5">
                 {t('register.title')}
               </Text>
               <Field
@@ -74,6 +74,7 @@ const Register: FC = () => {
                   setData({ ...data, username: val })
                   setErrors({ ...errors, username: '' })
                 }}
+                shadow={true}
                 error={errors.username}
               />
               <Field
@@ -83,6 +84,7 @@ const Register: FC = () => {
                   setData({ ...data, email: val })
                   setErrors({ ...errors, email: '' })
                 }}
+                shadow={true}
                 error={errors.email}
               />
               <Field
@@ -93,6 +95,7 @@ const Register: FC = () => {
                   setErrors({ ...errors, password: '' })
                 }}
                 isSecure={true}
+                shadow={true}
                 error={errors.password}
               />
               <TextButton
@@ -101,7 +104,7 @@ const Register: FC = () => {
                 isLoading={isLoading}
               />
               <Pressable onPress={() => navigation.navigate('Login')}>
-                <Text className="text-center mt-1 text-gray-400 font-semibold">
+                <Text style={{ color: '#DEB887' }} className="text-center mt-1 font-semibold">
                   {t('register.toLogin')}
                 </Text>
               </Pressable>

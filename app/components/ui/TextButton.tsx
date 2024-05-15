@@ -13,14 +13,15 @@ const TextButton: FC<ITextButton> = ({ onPress, title, isLoading, disabled }) =>
   return (
     <TouchableHighlight
       onPress={onPress}
-      className="bg-sky-600 rounded-xl w-full my-4 py-3"
+      style={{ backgroundColor: '#0f5645' }}
+      className="rounded-xl w-full my-4 py-3"
       disabled={disabled}
     >
       <View className="items-center">
         {isLoading ? (
-          <Loader size="small" color="#ffffff" />
+          <Loader size="small" color="#FFFFE0" />
         ) : (
-          <Text className="text-white">{title}</Text>
+          <Text style={{ color: '#FFFFE0' }}>{title}</Text>
         )}
       </View>
     </TouchableHighlight>

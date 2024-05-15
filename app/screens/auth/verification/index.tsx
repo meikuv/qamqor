@@ -33,15 +33,15 @@ const Verification: FC = () => {
   }
 
   return (
-    <DefaultLayout bgColor="bg-white">
+    <DefaultLayout>
       <View className="mx-5 justify-center items-center h-full">
         <View className="w-10/12">
-          <Text className="text-center text-blue-900 text-2xl font-bold">
+          <Text style={{ color: '#0f5645' }} className="text-center text-2xl font-bold">
             {t('verification.title')}
           </Text>
           <Text className="text-gray-400 text-center text-xs">
             {t('verification.subTitle')}
-            <Text className="text-gray-800"> {email}</Text>
+            <Text style={{ color: '#DEB887' }}> {email}</Text>
           </Text>
           <CodeInputField
             setPinReady={setPinReady}

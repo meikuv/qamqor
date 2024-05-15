@@ -37,13 +37,18 @@ const Field: FC<IField> = ({
 }) => {
   return (
     <View className="w-full">
-      {label && <Text className="text-sky-600 text-md ml-2 mt-2">{label}:</Text>}
+      {label && (
+        <Text style={{ color: '#0f5645' }} className="text-md ml-2 mt-2">
+          {label}:
+        </Text>
+      )}
       <View className="flex-row items-center">
         <TextInput
           ref={ref}
           onPressIn={onPress}
           onChangeText={onChange}
           placeholder={placeholder}
+          placeholderTextColor="#0f5645"
           value={value}
           secureTextEntry={isSecure}
           editable={!isDisabled}
@@ -51,12 +56,13 @@ const Field: FC<IField> = ({
           autoCapitalize="none"
           cursorColor="#000"
           autoComplete="off"
+          style={{ backgroundColor: '#FFFFE0', color: '#0f5645' }}
           className={`flex-1 rounded-xl text-sm ${color ? color : 'bg-sky-50'} ${
             shadow ? 'shadow-2xl shadow-gray-600' : null
           } mt-2 py-3 px-4 ${closeIcon ? 'mr-1' : null}`}
         />
         {closeIcon && (
-          <IconButton name="close-circle" size={25} color="#3b82f6" onPress={onClose} />
+          <IconButton name="close-circle" size={25} color="#0f5645" onPress={onClose} />
         )}
       </View>
       {error && <Text className="text-xs text-red-500 mt-1 mx-2">{error}</Text>}

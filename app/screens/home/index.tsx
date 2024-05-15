@@ -27,7 +27,7 @@ const Home: FC = () => {
   ]
 
   return (
-    <DefaultLayout isScrollView={true} refreshing={false} bgColor="bg-white">
+    <DefaultLayout isScrollView={true} refreshing={false}>
       <View className="flex-1">
         <View>
           <ImageBackground
@@ -37,10 +37,12 @@ const Home: FC = () => {
           />
           <View className="absolute inset-0 w-full h-full bg-gray-900 opacity-50 rounded-xl"></View>
           <View className="absolute top-0 left-0 right-0 bottom-10 justify-end items-center">
-            <Text className="text-white text-base font-bold text-center">{image[0].text}</Text>
+            <Text style={{ color: '#FFFFE0' }} className="text-base font-bold text-center">
+              {image[0].text}
+            </Text>
           </View>
           <View className="w-full absolute -top-10 left-0 right-0 bottom-10 flex-1 flex-row justify-center items-center">
-            <Pressable className="w-11/12" onPressIn={() => navigation.navigate('Search')}>
+            <Pressable className="w-11/12" onPress={() => navigation.navigate('Search')}>
               <Field
                 placeholder={t('home.search')}
                 shadow={true}
@@ -50,7 +52,10 @@ const Home: FC = () => {
             </Pressable>
           </View>
         </View>
-        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-500 my-3 mx-2 px-4 pt-4">
+        <View
+          style={{ backgroundColor: '#0f5645' }}
+          className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-600 my-3 mx-2 px-4 pt-4"
+        >
           {links.map((link) => (
             <TextLink
               key={link.key}
@@ -61,13 +66,17 @@ const Home: FC = () => {
           ))}
         </View>
         <VideoPlayer />
-        <View className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-400 mt-3 mb-5 mx-2 px-4 pt-4">
+        <View
+          style={{ backgroundColor: '#FFFFE0' }}
+          className="bg-white flex-col items-center justify-center rounded-xl shadow-xl shadow-gray-600 mt-3 mb-5 mx-2 px-4 pt-4"
+        >
           {markers.map((marker) => (
             <TextLink
               key={marker.key}
               title={marker.title}
               iconName="map-marker"
               iconColor={marker.iconColor}
+              textColor="#0f5645"
               onPress={() => {}}
             />
           ))}

@@ -21,12 +21,16 @@ const General = () => {
   return (
     <View className="divide-y divide-gray-100">
       <View className="p-5">
-        <Text className="text-xl font-bold">{t('settings.appLang')}</Text>
+        <Text style={{ color: '#0f5645' }} className="text-xl font-bold">
+          {t('settings.appLang')}
+        </Text>
         {fields.map((field) => (
           <View key={field.key} className="py-3 px-2 flex-row justify-between">
-            <Text className="text-base">{field.title}</Text>
+            <Text style={{ color: '#0f5645' }} className="text-base">
+              {field.title}
+            </Text>
             <BouncyCheckbox
-              fillColor="rgb(2, 132, 199)"
+              fillColor="#0f5645"
               isChecked={language === field.key}
               onPress={() => {
                 localeChangeHandler(field.key)

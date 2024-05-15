@@ -50,7 +50,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           />
         </View>
         <View className="flex justify-center items-center -mt-20">
-          <View className="bg-white p-2 rounded-full">
+          <View style={{ backgroundColor: '#FFFFE0' }} className="p-2 rounded-full">
             <Image
               source={{ uri: assistance.photoUrl }}
               className="h-32 w-32 bg-white rounded-full"
@@ -61,7 +61,10 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           <View className="items-center mx-5">
             <Text className="text-center text-2xl font-medium">{assistance.name}</Text>
           </View>
-          <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 mt-2 p-4">
+          <View
+            style={{ backgroundColor: '#FFFFE0' }}
+            className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 mt-2 p-4"
+          >
             <Text className="text-base font-medium">
               {imageIndex === 0 ? t('charity.about') : t('volunteer.about')}
             </Text>
@@ -90,7 +93,10 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             </View>
           )}
           {assistance.directions.length !== 0 && (
-            <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4">
+            <View
+              style={{ backgroundColor: '#FFFFE0' }}
+              className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4"
+            >
               <Text className="text-base font-medium mb-1">{t('charity.direct')}</Text>
               {assistance.directions.map((direction) => (
                 <Text key={direction.id} className="text-xs">{`\u2023 ${
@@ -100,7 +106,10 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             </View>
           )}
           {assistance.requisites.length !== 0 && (
-            <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 py-4 pl-4">
+            <View
+              style={{ backgroundColor: '#FFFFE0' }}
+              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 py-4 pl-4"
+            >
               <ScrollView
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
@@ -113,7 +122,10 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             </View>
           )}
           {assistance.locations.length !== 0 && (
-            <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4">
+            <View
+              style={{ backgroundColor: '#FFFFE0' }}
+              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 my-2 p-4"
+            >
               <View className="flex-row justify-between">
                 <Text className="text-base font-medium mb-1">{t('charity.address')}</Text>
                 <IconButton
@@ -127,7 +139,8 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
                 assistance.locations.map((location) => (
                   <View
                     key={location.id}
-                    className="h-max bg-white rounded-xl shadow-md shadow-gray-400 p-2 mt-2"
+                    style={{ backgroundColor: '#FFFFE0' }}
+                    className="h-max bg-white rounded-xl shadow-md shadow-gray-600 p-2 mt-2"
                   >
                     {location.name && (
                       <View className="flex-row items-center mb-1">
@@ -164,12 +177,16 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             </View>
           )}
           {assistance.phoneNumbers.length !== 0 && (
-            <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4">
+            <View
+              style={{ backgroundColor: '#FFFFE0' }}
+              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 my-2 p-4"
+            >
               <Text className="text-base font-medium mb-1">{t('charity.phone')}</Text>
               {assistance.phoneNumbers.map((phone) => (
                 <View
                   key={phone.id}
-                  className="h-max bg-white rounded-xl shadow-md shadow-gray-400 p-2 mt-2"
+                  style={{ backgroundColor: '#FFFFE0' }}
+                  className="h-max bg-white rounded-xl shadow-md shadow-gray-600 p-2 mt-2"
                 >
                   {phone.personName && (
                     <View className="flex-row items-center mb-1">
@@ -191,7 +208,10 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             </View>
           )}
           {assistance.contact && (
-            <View className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4">
+            <View
+              style={{ backgroundColor: '#FFFFE0' }}
+              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 my-2 p-4"
+            >
               <Text className="text-base font-medium mb-1">{t('charity.contact')}</Text>
               {assistance.contact.websiteUrl && (
                 <Pressable

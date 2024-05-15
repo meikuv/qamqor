@@ -18,13 +18,17 @@ const PrivateStack = () => {
       initialRouteName="Home"
       screenOptions={{
         headerShown: false,
+        tabBarInactiveTintColor: '#DEB887',
+        tabBarActiveTintColor: '#0f5645',
         tabBarStyle: {
           height: 60,
           paddingTop: 10,
           paddingBottom: 5,
+          backgroundColor: '#FFFFE0',
         },
         tabBarLabelStyle: {
-          fontSize: 10,
+          fontSize: 12,
+          color: '#0f5645',
         },
       }}
     >

@@ -13,7 +13,10 @@ const Header: FC<IHeaderProps> = ({ user }) => {
   const navigation = useNavigation()
 
   return (
-    <View className="w-full h-32 items-center justify-center rounded-b-2xl bg-sky-700">
+    <View
+      style={{ backgroundColor: '#0f5645' }}
+      className="w-full h-32 items-center justify-center rounded-b-2xl"
+    >
       <Pressable
         onPress={() => navigation.navigate('ProfileUpdate')}
         className="w-11/12 pt-5 flex-row items-center justify-between"
@@ -21,15 +24,17 @@ const Header: FC<IHeaderProps> = ({ user }) => {
         <View className="flex-row items-center">
           <UserImage />
           <View className="ml-8">
-            <Text className="text-lg font-medium text-white">
+            <Text style={{ color: '#DEB887' }} className="text-lg font-medium">
               {user?.lastName && user?.firstName
                 ? `${user?.lastName} ${user?.firstName}`
                 : user?.username}
             </Text>
-            <Text className="text-xs text-white">{user?.email}</Text>
+            <Text style={{ color: '#DEB887' }} className="text-xs">
+              {user?.email}
+            </Text>
           </View>
         </View>
-        <Icon name="chevron-right" size={15} color={'white'} />
+        <Icon name="chevron-right" size={15} color={'#DEB887'} />
       </Pressable>
     </View>
   )

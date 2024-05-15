@@ -27,7 +27,7 @@ const Law: FC<ILawsProps> = ({ route }) => {
   const renderScene = ({ route: routing }) => {
     switch (routing.key) {
       case 'lawyers':
-        return <Lawyers scrollToIndex={route?.params.scrollToIndex} />
+        return <Lawyers scrollToIndex={route?.params?.scrollToIndex} />
       case 'criminal':
       case 'civil':
       case 'administrative':
@@ -38,7 +38,7 @@ const Law: FC<ILawsProps> = ({ route }) => {
   }
 
   const renderTabBar = (props: any) => (
-    <View style={{ flexDirection: 'row', backgroundColor: '#fff', elevation: 2 }}>
+    <View style={{ flexDirection: 'row', backgroundColor: '#FFFFE0', elevation: 2 }}>
       {props.navigationState.routes.map(
         (
           route: { key: React.Key | null | undefined; title: any },
@@ -52,13 +52,13 @@ const Law: FC<ILawsProps> = ({ route }) => {
               justifyContent: 'center',
               paddingVertical: 10,
               borderBottomWidth: index === i ? 2 : 0,
-              borderBottomColor: index === i ? 'rgb(2, 132, 199)' : 'transparent',
+              borderBottomColor: index === i ? '#0f5645' : 'transparent',
             }}
             onPress={() => setIndex(i)}
           >
             <Text
               style={{
-                color: index === i ? 'rgb(2, 132, 199)' : '#000',
+                color: index === i ? '#0f5645' : '#DEB887',
                 fontWeight: '500',
                 fontSize: 14,
                 textAlign: 'center',

@@ -36,7 +36,7 @@ const ImagePick = () => {
             resizeMode="cover"
           />
           <Pressable onPress={pickImage}>
-            <Text style={{ textAlign: 'center', color: '#3b82f6' }}>
+            <Text style={{ textAlign: 'center', color: '#0f5645' }}>
               {t('profileUpdate.image')}
             </Text>
           </Pressable>

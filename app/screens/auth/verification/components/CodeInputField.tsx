@@ -38,12 +38,14 @@ const CodeInputField: FC<ICodeInput> = ({ setPinReady, code, setCode, maxLength 
     const isDigitFocused = isCurrentDigit || (isLastDigit && isCodeFull)
 
     const classNames = `border-gray-300 border-2 rounded p-3 w-14 h-14 ${
-      (inputIsFocused && isDigitFocused) || isCodeFull ? 'border-sky-400' : ''
+      (inputIsFocused && isDigitFocused) || isCodeFull ? 'border-emerald-900' : ''
     }`
 
     return (
       <View className={classNames} key={index}>
-        <Text className="text-center text-xl font-bold text-sky-600">{digit}</Text>
+        <Text style={{ color: '#0f5645' }} className="text-center text-xl font-bold">
+          {digit}
+        </Text>
       </View>
     )
   }

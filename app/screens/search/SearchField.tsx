@@ -92,7 +92,6 @@ const SearchField = ({
       <Field
         placeholder={t('home.search')}
         shadow={true}
-        color="bg-white"
         closeIcon={Platform.OS === 'android' && isOptionsVisible}
         clearButtonMode={Platform.OS === 'ios' ? 'while-editing' : undefined}
         onPress={handlePress}
@@ -113,16 +112,21 @@ const SearchField = ({
         }}
       >
         {isOptionsVisible && (
-          <View className="absolute top-0 left-0 w-max flex-wrap flex-row bg-white rounded-xl mt-1 px-2 shadow-2xl shadow-gray-400">
+          <View
+            style={{ backgroundColor: '#FFFFE0' }}
+            className="absolute top-0 left-0 w-max flex-wrap flex-row bg-white rounded-xl mt-1 px-2 shadow-2xl shadow-gray-400"
+          >
             {chips.map((chip) => (
               <Pressable
                 key={chip.key}
                 onPress={() => setSearchType(chip.title)}
-                className={`w-max items-center justify-center ${
-                  searchType === chip.title ? 'bg-sky-700' : 'bg-gray-100'
-                } rounded-full p-2 mr-2 my-2`}
+                style={{ backgroundColor: `${searchType === chip.title ? '#DEB887' : '#FFFFE0'}` }}
+                className={`w-max items-center justify-center rounded-full p-2 mr-2 my-2`}
               >
-                <Text className={`text-xs ${searchType === chip.title ? 'text-white' : null}`}>
+                <Text
+                  style={{ color: `${searchType === chip.title ? '#0f5645' : ''}` }}
+                  className="text-xs"
+                >
                   {t(`search.${chip.title}`)}
                 </Text>
               </Pressable>

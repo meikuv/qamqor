@@ -10,6 +10,7 @@ interface ISafeLayout {
 const SafeLayout: FC<ISafeLayout> = ({ children, isScrollView, style }) => {
   return (
     <SafeAreaView
+      style={{ backgroundColor: '#FFFFE0' }}
       className={`w-full h-full ${style} ${Platform.OS === 'android' ? ` pt-[25px]` : null}`}
     >
       {isScrollView ? <ScrollView className="flex-1">{children}</ScrollView> : children}
