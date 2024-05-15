@@ -4,6 +4,7 @@ import { useAssistance } from '../../../hooks/useAssistance'
 import { useI18n } from '../../../hooks/useI18n'
 import { useTranslation } from 'react-i18next'
 import { ILawyer } from '../../../services/assistance.service'
+import { shadowLevel } from '../../../../styles'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import DefaultLayout from '../../../components/layout/DefaultLayout'
 
@@ -39,7 +40,7 @@ const Lawyers: FC<ILawyerProps> = ({ scrollToIndex }) => {
     return (
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className="flex h-max bg-white rounded-xl shadow-xl shadow-gray-800 m-2 px-4 py-2"
+        className={`flex h-max bg-white rounded-xl shadow-xl ${shadowLevel} m-2 px-4 py-2`}
       >
         <View className="flex-1 flex-col">
           <View className="flex-1 flex-row items-center">

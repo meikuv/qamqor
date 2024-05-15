@@ -3,6 +3,7 @@ import { View, Text, Image, ScrollView, Pressable, Linking, PixelRatio } from 'r
 import { useTranslation } from 'react-i18next'
 import { useI18n } from '../hooks/useI18n'
 import { IAssistance } from '../services/assistance.service'
+import { shadowLevel } from '../../styles'
 import WebView from 'react-native-webview'
 import handsImage from '../../assets/hands.jpg'
 import heartImage from '../../assets/heart.jpeg'
@@ -63,7 +64,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           </View>
           <View
             style={{ backgroundColor: '#FFFFE0' }}
-            className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 mt-2 p-4"
+            className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} mx-5 mt-2 p-4`}
           >
             <Text className="text-base font-medium">
               {imageIndex === 0 ? t('charity.about') : t('volunteer.about')}
@@ -73,7 +74,9 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             </Text>
           </View>
           {assistance.postUrl && (
-            <View className="flex bg-white rounded-xl shadow-xl shadow-gray-400 overflow-hidden mx-5 mt-2">
+            <View
+              className={`flex bg-white rounded-xl shadow-xl ${shadowLevel} overflow-hidden mx-5 mt-2`}
+            >
               <WebView
                 style={{ height: contentHeight }}
                 automaticallyAdjustContentInsets={false}
@@ -95,7 +98,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           {assistance.directions.length !== 0 && (
             <View
               style={{ backgroundColor: '#FFFFE0' }}
-              className="h-max bg-white rounded-xl shadow-md shadow-gray-400 mx-5 my-2 p-4"
+              className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} mx-5 my-2 p-4`}
             >
               <Text className="text-base font-medium mb-1">{t('charity.direct')}</Text>
               {assistance.directions.map((direction) => (
@@ -108,7 +111,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           {assistance.requisites.length !== 0 && (
             <View
               style={{ backgroundColor: '#FFFFE0' }}
-              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 py-4 pl-4"
+              className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} mx-5 py-4 pl-4`}
             >
               <ScrollView
                 horizontal={true}
@@ -124,7 +127,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           {assistance.locations.length !== 0 && (
             <View
               style={{ backgroundColor: '#FFFFE0' }}
-              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 my-2 p-4"
+              className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} mx-5 my-2 p-4`}
             >
               <View className="flex-row justify-between">
                 <Text className="text-base font-medium mb-1">{t('charity.address')}</Text>
@@ -140,7 +143,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
                   <View
                     key={location.id}
                     style={{ backgroundColor: '#FFFFE0' }}
-                    className="h-max bg-white rounded-xl shadow-md shadow-gray-600 p-2 mt-2"
+                    className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} p-2 mt-2`}
                   >
                     {location.name && (
                       <View className="flex-row items-center mb-1">
@@ -179,14 +182,14 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           {assistance.phoneNumbers.length !== 0 && (
             <View
               style={{ backgroundColor: '#FFFFE0' }}
-              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 my-2 p-4"
+              className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} mx-5 my-2 p-4`}
             >
               <Text className="text-base font-medium mb-1">{t('charity.phone')}</Text>
               {assistance.phoneNumbers.map((phone) => (
                 <View
                   key={phone.id}
                   style={{ backgroundColor: '#FFFFE0' }}
-                  className="h-max bg-white rounded-xl shadow-md shadow-gray-600 p-2 mt-2"
+                  className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} p-2 mt-2`}
                 >
                   {phone.personName && (
                     <View className="flex-row items-center mb-1">
@@ -210,7 +213,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           {assistance.contact && (
             <View
               style={{ backgroundColor: '#FFFFE0' }}
-              className="h-max bg-white rounded-xl shadow-md shadow-gray-600 mx-5 my-2 p-4"
+              className={`h-max bg-white rounded-xl shadow-md ${shadowLevel} mx-5 my-2 p-4`}
             >
               <Text className="text-base font-medium mb-1">{t('charity.contact')}</Text>
               {assistance.contact.websiteUrl && (

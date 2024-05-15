@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next'
 import { Pressable, Text, View } from 'react-native'
 import { useAuth } from '../../../hooks/useAuth'
 import { useNavigation } from '@react-navigation/native'
+import { shadowLevel } from '../../../../styles'
 import TextLink from '../../../components/ui/TextLink'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons'
 import DefaultLayout from '../../../components/layout/DefaultLayout'
@@ -58,7 +59,7 @@ const Content = () => {
     <DefaultLayout bgColor="bg-white mt-4">
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-200 px-5 pt-4"
+        className={`w-full h-max items-start justify-center bg-white rounded-xl shadow-xl ${shadowLevel} px-5 pt-4`}
       >
         {links.map((link) => (
           <TextLink
@@ -73,7 +74,7 @@ const Content = () => {
       </View>
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className="w-full h-max items-start justify-center bg-white rounded-xl shadow-xl shadow-gray-200 px-5 pt-4 mt-4"
+        className={`w-full h-max items-start justify-center bg-white rounded-xl shadow-xl ${shadowLevel} px-5 pt-4 mt-4`}
       >
         {others.map((other) => (
           <TextLink

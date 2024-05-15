@@ -17,7 +17,7 @@ export default function App() {
             <SafeAreaProvider>
               <Navigation />
               <Toast />
-              <StatusBar style="auto" />
+              <StatusBar style="inverted" />
             </SafeAreaProvider>
           </AssistanceProvider>
         </UserProvider>
