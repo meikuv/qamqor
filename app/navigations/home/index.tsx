@@ -18,6 +18,7 @@ const HomeStack = () => {
     <Stack.Navigator
       initialRouteName="Home"
       screenOptions={{
+        headerBackTitleVisible: false,
         gestureEnabled: true,
         gestureDirection: 'horizontal',
         animation: 'slide_from_right',

@@ -1,3 +1,3 @@
 import { Platform } from 'react-native'
 
-export const shadowLevel = `${Platform.OS === 'android' ? 'shadow-gray-600' : 'shadow-gray-200'}`
+export const shadow-smLevel = `${Platform.OS === 'android' ? 'shadow-sm-[#4b5563]' : 'shadow-sm-[#e5e7eb]'}`

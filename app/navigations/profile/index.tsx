@@ -17,6 +17,7 @@ const ProfileStack = () => {
     <Stack.Navigator
       initialRouteName="Profile"
       screenOptions={{
+        headerBackTitleVisible: false,
         gestureEnabled: true,
         gestureDirection: 'horizontal',
         animation: 'slide_from_right',

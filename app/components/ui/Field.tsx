@@ -1,6 +1,5 @@
 import React, { FC } from 'react'
 import { TextInput, View, Text } from 'react-native'
-import { shadowLevel } from '../../../styles'
 import IconButton from './IconButton'
 
 interface IField {
@@ -59,7 +58,7 @@ const Field: FC<IField> = ({
           autoComplete="off"
           style={{ backgroundColor: '#FFFFE0', color: '#0f5645' }}
           className={`flex-1 rounded-xl text-sm ${color ? color : 'bg-sky-50'} ${
-            shadow ? `shadow-lg ${shadowLevel}` : null
+            shadow ? `shadow-sm shadow-black` : null
           } mt-2 py-3 px-4 ${closeIcon ? 'mr-1' : null}`}
         />
         {closeIcon && (

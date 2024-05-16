@@ -11,6 +11,7 @@ const AuthStack = () => {
   return (
     <Stack.Navigator
       screenOptions={{
+        headerBackTitleVisible: false,
         gestureEnabled: true,
         gestureDirection: 'horizontal',
         animation: 'slide_from_right',

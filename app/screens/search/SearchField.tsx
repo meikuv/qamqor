@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react'
 import { View, Text, Platform, Animated, Pressable } from 'react-native'
 import { useTranslation } from 'react-i18next'
-import { shadowLevel } from '../../../styles'
 import Field from '../../components/ui/Field'
 import debounce from 'lodash.debounce'
 import assistanceService from '../../services/assistance.service'
@@ -115,7 +114,7 @@ const SearchField = ({
         {isOptionsVisible && (
           <View
             style={{ backgroundColor: '#FFFFE0' }}
-            className={`absolute top-0 left-0 w-max flex-wrap flex-row bg-white rounded-xl mt-1 px-2 shadow-2xl ${shadowLevel}`}
+            className={`absolute top-0 left-0 w-max flex-wrap flex-row bg-white rounded-xl mt-1 px-2 shadow-sm shadow-black`}
           >
             {chips.map((chip) => (
               <Pressable

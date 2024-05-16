@@ -4,7 +4,7 @@ import * as ImagePicker from 'expo-image-picker'
 import IconButton from './ui/IconButton'
 import { useUser } from '../hooks/useUser'
 import { useTranslation } from 'react-i18next'
-;``
+
 const ImagePick = () => {
   const { t } = useTranslation()
   const { user, uploadImage } = useUser()

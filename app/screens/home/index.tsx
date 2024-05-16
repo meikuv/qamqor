@@ -2,7 +2,6 @@ import React, { FC } from 'react'
 import { ImageBackground, Pressable, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
-import { shadowLevel } from '../../../styles'
 import TextLink from '../../components/ui/TextLink'
 import VideoPlayer from './components/VideoPlayer'
 import DefaultLayout from '../../components/layout/DefaultLayout'
@@ -51,7 +50,7 @@ const Home: FC = () => {
         </View>
         <View
           style={{ backgroundColor: '#0f5645' }}
-          className={`bg-white flex-col items-center justify-center rounded-xl shadow-lg ${shadowLevel} my-3 mx-2 px-4 pt-4`}
+          className={`bg-white flex-col items-center justify-center rounded-xl shadow-sm shadow-sm-black my-3 mx-2 px-4 pt-4`}
         >
           {links.map((link) => (
             <TextLink
@@ -63,10 +62,7 @@ const Home: FC = () => {
           ))}
         </View>
         <VideoPlayer />
-        <View
-          style={{ backgroundColor: '#FFFFE0' }}
-          className={`bg-white flex-col items-center justify-center rounded-xl shadow-lg ${shadowLevel} mt-3 mb-5 mx-2 px-4 pt-4`}
-        >
+        <View className="bg-[#FFFFE0] flex-col items-center justify-center rounded-xl shadow-sm shadow-sm-black mt-3 mb-5 mx-2 px-4 pt-4">
           {markers.map((marker) => (
             <TextLink
               key={marker.key}

@@ -4,7 +4,6 @@ import { useAssistance } from '../../../hooks/useAssistance'
 import { IAssistance } from '../../../services/assistance.service'
 import { useNavigation } from '@react-navigation/native'
 import { useI18n } from '../../../hooks/useI18n'
-import { shadowLevel } from '../../../../styles'
 import DefaultLayout from '../../../components/layout/DefaultLayout'
 import IconButton from '../../../components/ui/IconButton'
 
@@ -54,7 +53,7 @@ const CharityList: FC = () => {
       <Pressable
         onPress={() => navigation.navigate('Assistance', { assistance: charity, imageIndex: 0 })}
         style={{ backgroundColor: '#FFFFE0' }}
-        className={`w-full h-max mb-2 bg-white p-2 rounded-xl shadow-lg ${shadowLevel}`}
+        className={`w-full h-max mb-2 bg-white p-2 rounded-xl shadow-sm shadow-black`}
       >
         <View className="flex-row w-full h-max items-center">
           <ImageBackground

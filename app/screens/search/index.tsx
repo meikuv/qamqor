@@ -1,7 +1,6 @@
 import React, { FC, useMemo, useState } from 'react'
 import { Image, Text, Pressable, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { shadowLevel } from '../../../styles'
 import debounce from 'lodash.debounce'
 import SafeLayout from '../../components/layout/SafeLayout'
 import SearchField from './SearchField'
@@ -39,7 +38,7 @@ const Search: FC = () => {
               <Pressable
                 key={item.id}
                 style={{ backgroundColor: '#FFFFE0' }}
-                className={`flex-row items-center bg-white rounded-xl mb-2 mx-6 p-2 shadow-2xl ${shadowLevel}`}
+                className={`flex-row items-center bg-white rounded-xl mb-2 mx-6 p-2 shadow-sm-2xl shadow-black`}
                 onPress={() => {
                   if (resultType === 'lawyer') {
                     navigation.navigate('Law', { scrollToIndex: item.id })
