@@ -42,12 +42,6 @@ const Content = () => {
       title: t('changePassword.title'),
       navigate: 'ChangePassword',
     },
-    {
-      key: 'contactUs',
-      iconName: 'contacts',
-      title: t('contact.title'),
-      navigate: 'ContactUs',
-    },
   ]
 
   const handleLogout = () => {

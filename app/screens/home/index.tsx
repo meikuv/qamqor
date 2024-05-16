@@ -50,7 +50,7 @@ const Home: FC = () => {
         </View>
         <View
           style={{ backgroundColor: '#0f5645' }}
-          className={`bg-white flex-col items-center justify-center rounded-xl shadow-sm shadow-sm-black my-3 mx-2 px-4 pt-4`}
+          className={`bg-white flex-col items-center justify-center rounded-xl shadow-sm shadow-black my-3 mx-2 px-4 pt-4`}
         >
           {links.map((link) => (
             <TextLink
@@ -62,7 +62,7 @@ const Home: FC = () => {
           ))}
         </View>
         <VideoPlayer />
-        <View className="bg-[#FFFFE0] flex-col items-center justify-center rounded-xl shadow-sm shadow-sm-black mt-3 mb-5 mx-2 px-4 pt-4">
+        <View className="bg-[#FFFFE0] flex-col items-center justify-center rounded-xl shadow-sm shadow-black mt-3 mb-5 mx-2 px-4 pt-4">
           {markers.map((marker) => (
             <TextLink
               key={marker.key}

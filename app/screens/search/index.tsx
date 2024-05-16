@@ -38,7 +38,7 @@ const Search: FC = () => {
               <Pressable
                 key={item.id}
                 style={{ backgroundColor: '#FFFFE0' }}
-                className={`flex-row items-center bg-white rounded-xl mb-2 mx-6 p-2 shadow-sm-2xl shadow-black`}
+                className={`flex-row items-center bg-white rounded-xl mb-2 mx-6 p-2 shadow-sm shadow-black`}
                 onPress={() => {
                   if (resultType === 'lawyer') {
                     navigation.navigate('Law', { scrollToIndex: item.id })
