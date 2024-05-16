@@ -75,7 +75,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
           </View>
           {assistance.postUrl && (
             <View
-              className={`flex bg-white rounded-xl shadow-xl ${shadowLevel} overflow-hidden mx-5 mt-2`}
+              className={`flex bg-white rounded-xl shadow-lg ${shadowLevel} overflow-hidden mx-5 mt-2`}
             >
               <WebView
                 style={{ height: contentHeight }}

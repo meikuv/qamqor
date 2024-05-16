@@ -32,7 +32,7 @@ const Laws: FC<ILawsProps> = ({ law }) => {
     >
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className={`flex bg-white rounded-xl shadow-xl ${shadowLevel} mx-2 my-2`}
+        className={`flex bg-white rounded-xl shadow-lg ${shadowLevel} mx-2 my-2`}
       >
         {law &&
           law?.map((item, index) => (

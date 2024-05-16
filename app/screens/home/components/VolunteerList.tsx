@@ -27,7 +27,7 @@ const VolunteerList: FC = () => {
       <Pressable
         onPress={() => navigation.navigate('Assistance', { assistance: volunteer, imageIndex: 1 })}
         style={{ backgroundColor: '#FFFFE0' }}
-        className={`w-full h-max mb-2 bg-white p-2 rounded-xl shadow-xl ${shadowLevel}`}
+        className={`w-full h-max mb-2 bg-white p-2 rounded-xl shadow-lg ${shadowLevel}`}
       >
         <View className="flex-row w-full h-max items-center">
           <ImageBackground

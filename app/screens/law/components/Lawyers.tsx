@@ -40,7 +40,7 @@ const Lawyers: FC<ILawyerProps> = ({ scrollToIndex }) => {
     return (
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className={`flex h-max bg-white rounded-xl shadow-xl ${shadowLevel} m-2 px-4 py-2`}
+        className={`flex h-max bg-white rounded-xl shadow-lg ${shadowLevel} m-2 px-4 py-2`}
       >
         <View className="flex-1 flex-col">
           <View className="flex-1 flex-row items-center">

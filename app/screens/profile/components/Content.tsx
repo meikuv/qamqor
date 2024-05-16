@@ -59,7 +59,7 @@ const Content = () => {
     <DefaultLayout bgColor="bg-white mt-4">
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className={`w-full h-max items-start justify-center bg-white rounded-xl shadow-xl ${shadowLevel} px-5 pt-4`}
+        className={`w-full h-max items-start justify-center bg-white rounded-xl shadow-lg ${shadowLevel} px-5 pt-4`}
       >
         {links.map((link) => (
           <TextLink
@@ -74,7 +74,7 @@ const Content = () => {
       </View>
       <View
         style={{ backgroundColor: '#FFFFE0' }}
-        className={`w-full h-max items-start justify-center bg-white rounded-xl shadow-xl ${shadowLevel} px-5 pt-4 mt-4`}
+        className={`w-full h-max items-start justify-center bg-white rounded-xl shadow-lg ${shadowLevel} px-5 pt-4 mt-4`}
       >
         {others.map((other) => (
           <TextLink
