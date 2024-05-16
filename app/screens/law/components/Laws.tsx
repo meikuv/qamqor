@@ -40,6 +40,7 @@ const Laws: FC<ILawsProps> = ({ law }) => {
               <Collapsible title={item.title}>
                 {item.lawArticles?.map((articles) => (
                   <View
+                    key={articles.id}
                     style={{ backgroundColor: '#DEB887' }}
                     className="flex-1 rounded-xl mt-2 p-2"
                   >
@@ -48,7 +49,7 @@ const Laws: FC<ILawsProps> = ({ law }) => {
                     </Text>
                     <View className="mt-1">
                       {articles.descriptions.map((desc) => (
-                        <Text className="text-xs">{`\u2023 ${desc.title}`}</Text>
+                        <Text key={desc.id} className="text-xs">{`\u2023 ${desc.title}`}</Text>
                       ))}
                     </View>
                   </View>
