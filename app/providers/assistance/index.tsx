@@ -1,5 +1,10 @@
 import React, { createContext, useMemo, useState, FC, ReactNode } from 'react'
-import assistanceService, { IAssistance, ILaw, ILawyer } from '../../services/assistance.service'
+import assistanceService, {
+  IAssistance,
+  ILaw,
+  ILawyer,
+  IMapLocation,
+} from '../../services/assistance.service'
 
 interface IContext {
   isLoading: boolean
@@ -7,10 +12,12 @@ interface IContext {
   volunteerList: IAssistance[] | undefined
   lawyerList: ILawyer[] | undefined
   lawList: ILaw[] | undefined
+  locationList: IMapLocation[] | undefined
   getAllCharity: () => Promise<IAssistance[] | undefined>
   getAllVolunteer: () => Promise<IAssistance[] | undefined>
   getAllLawyer: () => Promise<ILawyer[] | undefined>
   getAllLaw: () => Promise<ILaw[] | undefined>
+  getAllMapLocation: () => Promise<IMapLocation[] | undefined>
 }
 
 interface AssistanceProviderProps {
@@ -24,6 +31,7 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
   const [volunteerList, setVolunteerList] = useState<IAssistance[]>()
   const [lawyerList, setLawyerList] = useState<ILawyer[]>()
   const [lawList, setLawList] = useState<ILaw[]>()
+  const [locationList, setLocationList] = useState<IMapLocation[]>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getAllCharity = async () => {
@@ -78,6 +86,19 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
     }
   }
 
+  const getAllMapLocation = async () => {
+    try {
+      setIsLoading(true)
+      const { data } = await assistanceService.getAllMapLocation()
+      setLocationList(data)
+      return data
+    } catch (error) {
+      throw new Error('Get all location error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const value = useMemo(
     () => ({
       isLoading: isLoading,
@@ -85,10 +106,12 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
       volunteerList: volunteerList,
       lawyerList: lawyerList,
       lawList: lawList,
+      locationList: locationList,
       getAllVolunteer: getAllVolunteer,
       getAllCharity: getAllCharity,
       getAllLawyer: getAllLawyer,
       getAllLaw: getAllLaw,
+      getAllMapLocation: getAllMapLocation,
     }),
     [isLoading]
   )

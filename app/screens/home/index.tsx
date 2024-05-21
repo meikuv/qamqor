@@ -2,6 +2,7 @@ import React, { FC } from 'react'
 import { ImageBackground, Pressable, Text, View } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
 import { useTranslation } from 'react-i18next'
+import { useAssistance } from '../../hooks/useAssistance'
 import TextLink from '../../components/ui/TextLink'
 import VideoPlayer from './components/VideoPlayer'
 import DefaultLayout from '../../components/layout/DefaultLayout'
@@ -9,6 +10,7 @@ import DefaultLayout from '../../components/layout/DefaultLayout'
 const Home: FC = () => {
   const { t } = useTranslation()
   const navigation = useNavigation()
+  const { locationList } = useAssistance()
 
   const image = [
     { uri: require('../../../assets/heart.jpeg'), text: `"${t('home.overlayOne')}"` },
@@ -20,9 +22,9 @@ const Home: FC = () => {
     { key: 3, title: t('home.lawyerTitle'), icon: 'account-tie-outline', navigate: 'Law' },
   ]
   const markers = [
-    { key: 1, title: t('home.charityCenter'), iconColor: 'red' },
-    { key: 2, title: t('home.volunteerCenter'), iconColor: 'blue' },
-    { key: 3, title: t('home.lawyerCenter'), iconColor: '#FFA500' },
+    { key: 1, title: t('home.charityCenter'), iconColor: 'red', type: 'Благ фонд' },
+    { key: 2, title: t('home.volunteerCenter'), iconColor: 'blue', type: 'Волон фонд' },
+    { key: 3, title: t('home.lawyerCenter'), iconColor: '#FFA500', type: 'Юрид помощь' },
   ]
 
   return (
@@ -70,7 +72,15 @@ const Home: FC = () => {
               iconName="map-marker"
               iconColor={marker.iconColor}
               textColor="#0f5645"
-              onPress={() => {}}
+              onPress={() => {
+                const filteredLocations = locationList?.filter(
+                  (location) => location.type === marker.type
+                )
+                navigation.navigate('Map', {
+                  locations: filteredLocations,
+                  color: marker.iconColor,
+                })
+              }}
             />
           ))}
         </View>

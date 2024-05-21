@@ -81,6 +81,15 @@ export interface ILawArticleDescription {
   title: string
 }
 
+export interface IMapLocation {
+  id: number
+  type: string
+  locationName: string
+  locationAddress: string
+  latitude: number
+  longitude: number
+}
+
 class AssistanceService {
   async getAllCharity() {
     return http.get<IAssistance[]>('/assistance/charity/getAll')
@@ -96,6 +105,10 @@ class AssistanceService {
 
   async getAllLaw() {
     return http.get<ILaw[]>('/assistance/law/getAll')
+  }
+
+  async getAllMapLocation() {
+    return http.get<IMapLocation[]>('/assistance/map-location/getAll')
   }
 
   async searchAssistance(endPoint: string, name: string) {

@@ -16,6 +16,7 @@ interface IField {
   error?: string
   label?: string
   isDisabled?: boolean
+  isTextArea?: boolean
   clearButtonMode?: 'never' | 'while-editing' | 'unless-editing' | 'always' | undefined
 }
 
@@ -32,6 +33,7 @@ const Field: FC<IField> = ({
   error,
   label,
   isDisabled,
+  isTextArea,
   clearButtonMode,
   closeIcon,
 }) => {
@@ -53,10 +55,12 @@ const Field: FC<IField> = ({
           secureTextEntry={isSecure}
           editable={!isDisabled}
           clearButtonMode={clearButtonMode}
+          multiline={isTextArea}
+          numberOfLines={isTextArea ? 6 : undefined}
           autoCapitalize="none"
           cursorColor="#000"
           autoComplete="off"
-          style={{ backgroundColor: '#FFFFE0', color: '#0f5645' }}
+          style={{ backgroundColor: '#FFFFE0', color: '#DEB887' }}
           className={`flex-1 rounded-xl text-sm ${color ? color : 'bg-sky-50'} ${
             shadow ? `shadow-sm shadow-black` : null
           } mt-2 py-3 px-4 ${closeIcon ? 'mr-1' : null}`}

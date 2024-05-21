@@ -8,6 +8,8 @@ import VolunteerList from '../../screens/home/components/VolunteerList'
 import Search from '../../screens/search'
 import Assistance from '../../components/Assistance'
 import Law from '../../screens/law'
+import NeedHelp from '../../screens/support/NeedHelp'
+import CanHelp from '../../screens/support/CanHelp'
 
 const Stack = createNativeStackNavigator()
 
@@ -59,6 +61,26 @@ const HomeStack = () => {
         component={Law}
         options={{
           title: `${t('home.lawyerTitle')}`,
+          headerTransparent: false,
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
+        }}
+      />
+      <Stack.Screen
+        name="NeedHelp"
+        component={NeedHelp}
+        options={{
+          title: `${t('volunteer.needHelp.title')}`,
+          headerTransparent: false,
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
+        }}
+      />
+      <Stack.Screen
+        name="CanHelp"
+        component={CanHelp}
+        options={{
+          title: `${t('volunteer.canHelp.title')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },

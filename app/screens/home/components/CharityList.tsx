@@ -63,9 +63,13 @@ const CharityList: FC = () => {
             imageStyle={{ borderRadius: 25 }}
           />
           <View className="flex-1 text-center ml-4">
-            <Text className="text-black text-base font-medium">{charity.name}</Text>
+            <Text style={{ color: '#0f5645' }} className="text-base font-medium">
+              {charity.name}
+            </Text>
             {charity.contact.email && (
-              <Text className="text-xs text-gray-500">{charity.contact.email}</Text>
+              <Text style={{ color: '#0f5645' }} className="text-xs">
+                {charity.contact.email}
+              </Text>
             )}
           </View>
         </View>
@@ -76,7 +80,9 @@ const CharityList: FC = () => {
   const ListHeader: FC<{ type: string; count: number }> = ({ type, count }) => {
     return (
       <View className="flex-row justify-between">
-        <Text className="text-black font-bold text-xl mb-2">{type}</Text>
+        <Text style={{ color: '#0f5645' }} className="font-bold text-xl mb-2">
+          {type}
+        </Text>
         <IconButton
           name={collapsed[type] ? 'chevron-down' : 'chevron-up'}
           size={25}

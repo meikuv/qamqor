@@ -1,21 +1,31 @@
-import React, { FC } from 'react'
+import React, { FC, useRef, useState } from 'react'
 import { Dimensions, TouchableWithoutFeedback, View, Text } from 'react-native'
-import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
+import { IMapLocation } from '../../services/assistance.service'
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('screen')
 
-interface IRegion {
-  latitude: number
-  longitude: number
-  latitudeDelta: number
-  longitudeDelta: number
+interface IMapProps {
+  route: {
+    params: {
+      locations: IMapLocation[] | null
+      color: string
+    }
+  }
 }
 
-interface IMap {
-  region: IRegion
-}
+const Map: FC<IMapProps> = ({ route }) => {
+  const mapRef = useRef<MapView>(null)
 
-const Map: FC<IMap> = ({ region }) => {
+  const handleMarkerPress = (place: IMapLocation) => {
+    const region = {
+      latitude: place.latitude,
+      longitude: place.longitude,
+      latitudeDelta: 0.01,
+      longitudeDelta: 0.01,
+    }
+    mapRef.current?.animateToRegion(region, 1000)
+  }
   const defaultRegion = {
     latitude: 43.2551,
     longitude: 76.9126,
@@ -26,38 +36,28 @@ const Map: FC<IMap> = ({ region }) => {
   return (
     <MapView
       style={{ flex: 1, width: screenWidth, height: screenHeight }}
-      initialRegion={region || defaultRegion}
+      initialRegion={defaultRegion}
       provider={PROVIDER_GOOGLE}
     >
-      <Marker
-        coordinate={{
-          latitude: 51.1605,
-          longitude: 71.4704,
-        }}
-        title="Astana"
-        description="Capital city of Kazakhstan"
-      >
-        <TouchableWithoutFeedback onPress={() => alert('Astana Marker Pressed')}>
-          <View style={{ backgroundColor: 'white', padding: 10, borderRadius: 5 }}>
-            <Text>Astana</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </Marker>
-
-      <Marker
-        coordinate={{
-          latitude: 43.222,
-          longitude: 76.8512,
-        }}
-        title="Almaty"
-        description="Major city in Kazakhstan"
-      >
-        <TouchableWithoutFeedback onPress={() => alert('Almaty Marker Pressed')}>
-          <View style={{ backgroundColor: 'white', padding: 10, borderRadius: 5 }}>
-            <Text>Almaty</Text>
-          </View>
-        </TouchableWithoutFeedback>
-      </Marker>
+      {route.params?.locations &&
+        route.params?.locations.map((location) => (
+          <Marker
+            key={location.id}
+            coordinate={{
+              latitude: location.latitude,
+              longitude: location.longitude,
+            }}
+            pinColor={route.params?.color}
+            onPress={() => handleMarkerPress(location)}
+          >
+            <Callout>
+              <View className="flex justify-center items-center">
+                <Text className="text-xs font-bold">{location?.locationName}</Text>
+                <Text className="text-xs">{location?.locationAddress}</Text>
+              </View>
+            </Callout>
+          </Marker>
+        ))}
     </MapView>
   )
 }

@@ -20,7 +20,8 @@ const Login: FC = () => {
   const navigation = useNavigation()
   const { login, isLoading } = useAuth()
   const { connectedUser } = useUser()
-  const { getAllCharity, getAllVolunteer, getAllLawyer, getAllLaw } = useAssistance()
+  const { getAllCharity, getAllVolunteer, getAllLawyer, getAllLaw, getAllMapLocation } =
+    useAssistance()
 
   const [data, setData] = useState<IData>({ username: '', password: '' })
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
@@ -54,6 +55,7 @@ const Login: FC = () => {
     await getAllVolunteer()
     await getAllLawyer()
     await getAllLaw()
+    await getAllMapLocation()
     setData({} as IData)
   }
 

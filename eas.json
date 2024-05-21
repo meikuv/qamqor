@@ -8,14 +8,20 @@
       "distribution": "internal"
     },
     "preview": {
-      "distribution": "internal"
+      "distribution": "internal",
+      "android": {
+        "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "http://6f40-2-72-100-14.ngrok-free.app/api/v1"
+      }
     },
     "production": {
       "android": {
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "http://192.168.1.92:8222/api/v1"
+        "EXPO_PUBLIC_API_URL": "http://6f40-2-72-100-14.ngrok-free.app/api/v1"
       }
     }
   },

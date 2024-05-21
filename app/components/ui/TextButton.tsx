@@ -5,7 +5,7 @@ import Loader from './Loader'
 interface ITextButton {
   onPress: () => void
   title: string
-  isLoading: boolean
+  isLoading?: boolean
   disabled?: boolean
 }
 
@@ -14,7 +14,7 @@ const TextButton: FC<ITextButton> = ({ onPress, title, isLoading, disabled }) =>
     <TouchableHighlight
       onPress={onPress}
       style={{ backgroundColor: '#0f5645' }}
-      className="rounded-xl w-full my-4 py-3"
+      className="rounded-xl w-max my-4 py-3 px-2"
       disabled={disabled}
     >
       <View className="items-center">
