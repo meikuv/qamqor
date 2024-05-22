@@ -1,6 +1,6 @@
-import React, { FC, useRef, useState } from 'react'
-import { Dimensions, TouchableWithoutFeedback, View, Text } from 'react-native'
-import MapView, { Callout, Marker, PROVIDER_GOOGLE } from 'react-native-maps'
+import React, { FC, useRef } from 'react'
+import { Dimensions, View, Text, Platform } from 'react-native'
+import MapView, { Callout, Marker, PROVIDER_GOOGLE, PROVIDER_DEFAULT } from 'react-native-maps'
 import { IMapLocation } from '../../services/assistance.service'
 
 const { width: screenWidth, height: screenHeight } = Dimensions.get('screen')
@@ -37,7 +37,7 @@ const Map: FC<IMapProps> = ({ route }) => {
     <MapView
       style={{ flex: 1, width: screenWidth, height: screenHeight }}
       initialRegion={defaultRegion}
-      provider={PROVIDER_GOOGLE}
+      provider={Platform.OS === 'android' ? PROVIDER_GOOGLE : PROVIDER_DEFAULT}
     >
       {route.params?.locations &&
         route.params?.locations.map((location) => (

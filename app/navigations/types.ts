@@ -7,8 +7,8 @@ export type TypeRootStackParamList = {
   CharityList: any
   VolunteerList: any
   Assistance: any
-  NeedHelp: undefined
-  CanHelp: undefined
+  NeedHelp: any
+  CanHelp: any
   Map: any
   Law: any
   Search: undefined

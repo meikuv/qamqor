@@ -60,7 +60,11 @@ const Field: FC<IField> = ({
           autoCapitalize="none"
           cursorColor="#000"
           autoComplete="off"
-          style={{ backgroundColor: '#FFFFE0', color: '#DEB887' }}
+          style={{
+            backgroundColor: '#FFFFE0',
+            color: '#DEB887',
+            textAlignVertical: isTextArea ? 'top' : 'center',
+          }}
           className={`flex-1 rounded-xl text-sm ${color ? color : 'bg-sky-50'} ${
             shadow ? `shadow-sm shadow-black` : null
           } mt-2 py-3 px-4 ${closeIcon ? 'mr-1' : null}`}

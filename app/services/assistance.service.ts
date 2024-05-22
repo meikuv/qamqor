@@ -90,6 +90,30 @@ export interface IMapLocation {
   longitude: number
 }
 
+export interface ICanHelp {
+  id: number
+  organization: string
+  username: string
+  firstName: string
+  lastName: string
+  email: string
+  age: number
+  motivation: string
+  phoneNumber: string
+  createdAt: Date
+}
+
+export interface INeedHelp {
+  id: number
+  organization: string
+  username: string
+  fullName: string
+  supportType: string
+  expand: string
+  phoneNumber: string
+  createdAt: Date
+}
+
 class AssistanceService {
   async getAllCharity() {
     return http.get<IAssistance[]>('/assistance/charity/getAll')
@@ -109,6 +133,30 @@ class AssistanceService {
 
   async getAllMapLocation() {
     return http.get<IMapLocation[]>('/assistance/map-location/getAll')
+  }
+
+  async getAllCanHelpByUsername(username: string) {
+    return http.get<ICanHelp[]>(`/assistance/help/getAllCanHelp/${username}`)
+  }
+
+  async createCanHelp(canHelp: ICanHelp) {
+    return http.post('/assistance/help/createCanHelp', canHelp)
+  }
+
+  async deleteCanHelp(id: number) {
+    return http.delete(`/assistance/help/deleteCanHelp/${id}`)
+  }
+
+  async getAllNeedHelpByUsername(username: string) {
+    return http.get<INeedHelp[]>(`/assistance/help/getAllNeedHelp/${username}`)
+  }
+
+  async createNeedHelp(needHelp: INeedHelp) {
+    return http.post('/assistance/help/createNeedHelp', needHelp)
+  }
+
+  async deleteNeedHelp(id: number) {
+    return http.delete(`/assistance/help/deleteNeedHelp/${id}`)
   }
 
   async searchAssistance(endPoint: string, name: string) {

@@ -70,11 +70,11 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             <View className="flex-1 mx-4">
               <View className="flex-row justify-evenly">
                 <TextButton
-                  onPress={() => navigation.navigate('NeedHelp')}
+                  onPress={() => navigation.navigate('NeedHelp', { organization: assistance.name })}
                   title={t('volunteer.needHelp.title')}
                 />
                 <TextButton
-                  onPress={() => navigation.navigate('CanHelp')}
+                  onPress={() => navigation.navigate('CanHelp', { organization: assistance.name })}
                   title={t('volunteer.canHelp.title')}
                 />
               </View>

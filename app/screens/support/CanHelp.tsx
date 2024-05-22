@@ -1,23 +1,70 @@
-import React, { useState } from 'react'
+import React, { FC, useState } from 'react'
 import { View } from 'react-native'
-import DefaultLayout from '../../components/layout/DefaultLayout'
-import Field from '../../components/ui/Field'
 import { useUser } from '../../hooks/useUser'
 import { useTranslation } from 'react-i18next'
+import { useAssistance } from '../../hooks/useAssistance'
+import DefaultLayout from '../../components/layout/DefaultLayout'
+import Field from '../../components/ui/Field'
 import TextButton from '../../components/ui/TextButton'
 
-const CanHelp = () => {
+export interface ICanHelpProps {
+  route: {
+    params: {
+      organization: string
+    }
+  }
+}
+
+const CanHelp: FC<ICanHelpProps> = ({ route }) => {
   const { user } = useUser()
   const { t } = useTranslation()
+  const { organization } = route.params
+  const { isLoading, createCanHelp } = useAssistance()
   const [data, setData] = useState<any>({
+    organization: organization,
+    username: user.username,
     firstName: user.firstName || '',
     lastName: user.lastName || '',
     email: user.email || '',
-    age: null,
+    age: 0,
     motivation: '',
     phoneNumber: user.phoneNumber || '',
   })
   const [errors, setErrors] = useState<{ [key: string]: string }>({})
+
+  const validateForm = () => {
+    const errors: { [key: string]: string } = {}
+    const fieldsToCheck = ['firstName', 'lastName', 'email', 'age', 'motivation', 'phoneNumber']
+
+    fieldsToCheck.forEach((field) => {
+      if (!data[field] || !data[field].trim()) {
+        errors[field] = t(`volunteer.canHelp.${field}Error`)
+      }
+    })
+
+    return errors
+  }
+
+  const createCanHelpHandler = async () => {
+    const formErrors = validateForm()
+
+    if (Object.keys(formErrors).length > 0) {
+      setErrors(formErrors)
+      return
+    }
+
+    await createCanHelp(data)
+    setData({
+      organization: organization,
+      username: user.username,
+      firstName: user.firstName || '',
+      lastName: user.lastName || '',
+      email: user.email || '',
+      age: 0,
+      motivation: '',
+      phoneNumber: user.phoneNumber || '',
+    })
+  }
 
   return (
     <DefaultLayout isScrollView={true}>
@@ -84,9 +131,8 @@ const CanHelp = () => {
           shadow={true}
         />
         <TextButton
-          onPress={function (): void {
-            throw new Error('Function not implemented.')
-          }}
+          onPress={createCanHelpHandler}
+          isLoading={isLoading}
           title={t('volunteer.canHelp.send')}
         />
       </View>

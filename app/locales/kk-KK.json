@@ -62,20 +62,34 @@
       "needHelp": {
         "title": "Көмек керек",
         "fullName": "Аты-жөніңіз",
+        "fullNameError": "Аты-жөніңізді енгізіңіз",
         "phoneNumber": "Телефон нөміріңіз",
+        "phoneNumberError": "Телефон нөміріңізді енгізіңіз",
         "supportType": "Керекті көмек түрі",
+        "supportTypeError": "Керекті көмек түрін көрсетіңіз",
         "expand": "Толығырақ жазып жіберіңіз",
-        "send": "Жіберу"
+        "expandError": "Қосымша мәліметтерді енгізіңіз",
+        "send": "Жіберу",
+        "sendSuccess": "Сәтті жіберілді",
+        "sendError": "Желі қатесі"
       },
       "canHelp": {
         "title": "Көмектесу",
         "firstName": "Есіміңіз",
+        "firstNameError": "Есіміңізді толтырыңыз",
         "lastName": "Тегіңіз",
+        "lastNameError": "Тегіңізді толтырыңыз",
         "email": "Эл.Почтаңыз",
+        "emailError": "Электрондық пошта толтырыңыз",
         "age": "Жасыңыз",
+        "ageError": "Жасыңызды толтырыңыз",
         "motivation": "Неге бізбен болғыңыз келеді",
+        "motivationError": "Себебін толтырыңыз",
         "phoneNumber": "Телефон нөміріңіз",
-        "send": "Жіберу"
+        "phoneNumberError": "Телефон нөміріңізді толтырыңыз",
+        "send": "Жіберу",
+        "sendSuccess": "Сәтті жіберілді",
+        "sendError": "Желі қатесі"
       }
     },
     "law": {
