@@ -92,6 +92,7 @@ export interface IMapLocation {
 
 export interface ICanHelp {
   id: number
+  type: string
   organization: string
   username: string
   firstName: string
@@ -105,6 +106,7 @@ export interface ICanHelp {
 
 export interface INeedHelp {
   id: number
+  type: string
   organization: string
   username: string
   fullName: string
@@ -112,6 +114,15 @@ export interface INeedHelp {
   expand: string
   phoneNumber: string
   createdAt: Date
+}
+
+export interface IReview {
+  username: string
+  firstName: string
+  lastName: string
+  email: string
+  rating: number
+  comment: string
 }
 
 class AssistanceService {
@@ -157,6 +168,10 @@ class AssistanceService {
 
   async deleteNeedHelp(id: number) {
     return http.delete(`/assistance/help/deleteNeedHelp/${id}`)
+  }
+
+  async createReview(review: IReview) {
+    return http.post('/assistance/help/createReview', review)
   }
 
   async searchAssistance(endPoint: string, name: string) {

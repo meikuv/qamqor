@@ -16,16 +16,13 @@ const Content = () => {
       key: 'history',
       iconName: 'history',
       title: t('history.title'),
-    },
-    {
-      key: 'myRequests',
-      iconName: 'clipboard',
-      title: t('myRequests.title'),
+      navigate: 'HistoryList',
     },
     {
       key: 'leaveReview',
       iconName: 'email-fast-outline',
       title: t('leaveReview.title'),
+      navigate: 'Review',
     },
   ]
 
@@ -61,7 +58,7 @@ const Content = () => {
             iconName={link.iconName}
             textColor="#0f5645"
             iconColor="#0f5645"
-            onPress={() => {}}
+            onPress={() => navigation.navigate(link.navigate)}
           />
         ))}
       </View>

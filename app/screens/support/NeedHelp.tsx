@@ -19,7 +19,7 @@ const NeedHelp: FC<INeedHelpProps> = ({ route }) => {
   const { user } = useUser()
   const { t } = useTranslation()
   const { organization } = route.params
-  const { isLoading, createNeedHelp } = useAssistance()
+  const { isLoading, createNeedHelp, getAllNeedHelp } = useAssistance()
   const [data, setData] = useState<any>({
     organization: organization,
     username: user.username,
@@ -52,6 +52,7 @@ const NeedHelp: FC<INeedHelpProps> = ({ route }) => {
     }
 
     await createNeedHelp(data)
+    await getAllNeedHelp(user.username)
     setData({
       organization: organization,
       username: user.username,

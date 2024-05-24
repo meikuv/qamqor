@@ -29,7 +29,7 @@ const DebitCard: FC<IDebitCardProps> = ({ debitCardProps }) => {
             <Text className="text-white">Account Number</Text>
             {debitCardProps.onlinePaymentUrl && (
               <Pressable onPress={() => Linking.openURL(`${debitCardProps.onlinePaymentUrl}`)}>
-                <Text className="text-white">{debitCardProps.onlinePaymentUrl}</Text>
+                <Text className="text-[#DEB887]">{debitCardProps.onlinePaymentUrl}</Text>
               </Pressable>
             )}
             {debitCardProps.accountNumber && (

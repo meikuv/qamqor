@@ -6,6 +6,7 @@ import assistanceService, {
   ILawyer,
   IMapLocation,
   INeedHelp,
+  IReview,
 } from '../../services/assistance.service'
 import { showToast } from '../../components/toast'
 import { useTranslation } from 'react-i18next'
@@ -28,6 +29,7 @@ interface IContext {
   getAllCanHelp: (username: string) => Promise<ICanHelp[] | undefined>
   createCanHelp: (canHelp: ICanHelp) => Promise<any>
   getAllNeedHelp: (username: string) => Promise<INeedHelp[] | undefined>
+  createReview: (review: IReview) => Promise<any>
   createNeedHelp: (needHelp: INeedHelp) => Promise<any>
 }
 
@@ -130,17 +132,14 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
     try {
       setIsLoading(true)
       const { data } = await assistanceService.createCanHelp(canHelp)
-      setCanHelpList((prevCanHelpList) =>
-        prevCanHelpList ? [...prevCanHelpList, canHelp] : [canHelp]
-      )
-      showToast('success', t('volunteer.canHelp.send'), t('volunteer.canHelp.sendSuccess'))
+      showToast('success', t('volunteer.canHelp.title'), t('volunteer.canHelp.sendSuccess'))
       return data
     } catch (error: any) {
       if (error?.response) {
         const errorMessage = error.response.data.message
-        showToast('error', t('volunteer.canHelp.send'), errorMessage)
+        showToast('error', t('volunteer.canHelp.title'), errorMessage)
       } else {
-        showToast('error', t('volunteer.canHelp.send'), t('volunteer.canHelp.sendError'))
+        showToast('error', t('volunteer.canHelp.title'), t('volunteer.canHelp.sendError'))
       }
       throw new Error('Create canHelp error')
     } finally {
@@ -165,17 +164,33 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
     try {
       setIsLoading(true)
       const { data } = await assistanceService.createNeedHelp(needHelp)
-      setNeedHelpList((prevNeedHelpList) =>
-        prevNeedHelpList ? [...prevNeedHelpList, needHelp] : [needHelp]
-      )
-      showToast('success', t('volunteer.needHelp.send'), t('volunteer.needHelp.sendSuccess'))
+      showToast('success', t('volunteer.needHelp.title'), t('volunteer.needHelp.sendSuccess'))
       return data
     } catch (error: any) {
       if (error?.response) {
         const errorMessage = error.response.data.message
-        showToast('error', t('volunteer.needHelp.send'), errorMessage)
+        showToast('error', t('volunteer.needHelp.title'), errorMessage)
       } else {
-        showToast('error', t('volunteer.needHelp.send'), t('volunteer.needHelp.sendError'))
+        showToast('error', t('volunteer.needHelp.title'), t('volunteer.needHelp.sendError'))
+      }
+      throw new Error('Create needHelp error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  const createReview = async (review: IReview) => {
+    try {
+      setIsLoading(true)
+      const { data } = await assistanceService.createReview(review)
+      showToast('success', t('leaveReview.title'), t('volunteer.needHelp.sendSuccess'))
+      return data
+    } catch (error: any) {
+      if (error?.response) {
+        const errorMessage = error.response.data.message
+        showToast('error', t('leaveReview.title'), errorMessage)
+      } else {
+        showToast('error', t('leaveReview.title'), t('volunteer.needHelp.sendError'))
       }
       throw new Error('Create needHelp error')
     } finally {
@@ -184,7 +199,11 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
   }
 
   const combinedHelpList = useMemo(() => {
-    return [...(canHelpList || []), ...(needHelpList || [])]
+    return [...(canHelpList || []), ...(needHelpList || [])].sort((a, b) => {
+      const dateA = new Date(a.createdAt)
+      const dateB = new Date(b.createdAt)
+      return dateB.getTime() - dateA.getTime()
+    })
   }, [canHelpList, needHelpList])
 
   const value = useMemo(
@@ -207,6 +226,7 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
       createCanHelp: createCanHelp,
       getAllNeedHelp: getAllNeedHelp,
       createNeedHelp: createNeedHelp,
+      createReview: createReview,
     }),
     [isLoading]
   )

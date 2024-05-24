@@ -7,6 +7,9 @@ import Settings from '../../screens/settings'
 import Update from '../../screens/profile/components/Update'
 import ChangePassword from '../../screens/changePassword'
 import ContactUs from '../../screens/contact'
+import HistoryList from '../../screens/profile/components/history/HistoryList'
+import HistoryItem from '../../screens/profile/components/history/HistoryItem'
+import Review from '../../screens/profile/components/review/Review'
 
 const Stack = createNativeStackNavigator()
 
@@ -33,6 +36,35 @@ const ProfileStack = () => {
         component={Update}
         options={{
           title: `${t('profileUpdate.title')}`,
+          headerTransparent: false,
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
+        }}
+      />
+      <Stack.Screen
+        name="HistoryList"
+        component={HistoryList}
+        options={{
+          title: `${t('history.title')}`,
+          headerTransparent: false,
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
+        }}
+      />
+      <Stack.Screen
+        name="HistoryItem"
+        component={HistoryItem}
+        options={{
+          headerTransparent: false,
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
+        }}
+      />
+      <Stack.Screen
+        name="Review"
+        component={Review}
+        options={{
+          title: `${t('leaveReview.title')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },

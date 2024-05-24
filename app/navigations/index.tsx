@@ -13,9 +13,16 @@ const Stack = createNativeStackNavigator()
 
 const Navigation: FC = () => {
   const { token } = useAuth()
-  const { connectedUser } = useUser()
-  const { getAllCharity, getAllVolunteer, getAllLawyer, getAllLaw, getAllMapLocation } =
-    useAssistance()
+  const { connectedUser, user } = useUser()
+  const {
+    getAllCharity,
+    getAllVolunteer,
+    getAllLawyer,
+    getAllLaw,
+    getAllMapLocation,
+    getAllCanHelp,
+    getAllNeedHelp,
+  } = useAssistance()
   const [isSpalshLoading, setSplashIsloading] = useState<boolean>(true)
 
   useEffect(() => {
@@ -23,12 +30,14 @@ const Navigation: FC = () => {
       setSplashIsloading(true)
       try {
         if (token) {
-          await connectedUser()
+          const data: any = await connectedUser()
           await getAllLawyer()
           await getAllLaw()
           await getAllCharity()
           await getAllVolunteer()
           await getAllMapLocation()
+          await getAllCanHelp(data.username)
+          await getAllNeedHelp(data.username)
         }
       } finally {
         setSplashIsloading(false)

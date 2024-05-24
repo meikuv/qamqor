@@ -26,7 +26,7 @@ const Update: FC = () => {
   ]
 
   return (
-    <DefaultLayout isScrollView={true} bgColor="bg-white">
+    <DefaultLayout isScrollView={true}>
       <View className="items-center pt-10">
         <View className="w-10/12">
           <ImagePick />

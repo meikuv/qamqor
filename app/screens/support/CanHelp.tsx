@@ -19,7 +19,8 @@ const CanHelp: FC<ICanHelpProps> = ({ route }) => {
   const { user } = useUser()
   const { t } = useTranslation()
   const { organization } = route.params
-  const { isLoading, createCanHelp } = useAssistance()
+  const [refreshing, setRefreshing] = useState<boolean>(false)
+  const { isLoading, createCanHelp, getAllCanHelp } = useAssistance()
   const [data, setData] = useState<any>({
     organization: organization,
     username: user.username,
@@ -54,6 +55,8 @@ const CanHelp: FC<ICanHelpProps> = ({ route }) => {
     }
 
     await createCanHelp(data)
+    await getAllCanHelp(user.username)
+
     setData({
       organization: organization,
       username: user.username,

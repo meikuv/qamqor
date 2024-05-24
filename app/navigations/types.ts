@@ -9,6 +9,9 @@ export type TypeRootStackParamList = {
   Assistance: any
   NeedHelp: any
   CanHelp: any
+  HistoryList: undefined
+  HistoryItem: any
+  Review: undefined
   Map: any
   Law: any
   Search: undefined

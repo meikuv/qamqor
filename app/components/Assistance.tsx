@@ -138,7 +138,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
               <ScrollView
                 horizontal={true}
                 showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{ flexGrow: 1 }}
+                contentContainerStyle={{ flexGrow: 1, justifyContent: 'center' }}
               >
                 {assistance.requisites.map((requisite) => (
                   <DebitCard key={requisite.id} debitCardProps={requisite} />

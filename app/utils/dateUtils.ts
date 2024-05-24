@@ -1,14 +1,15 @@
-const formatDate = (dateString: Date) => {
-  const day = String(dateString.getDate()).padStart(2, '0')
-  const month = String(dateString.getMonth() + 1).padStart(2, '0') // getMonth() is zero-based
-  const year = dateString.getFullYear()
-
+export const formatDate = (dateString: string) => {
+  const date = new Date(dateString)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0')
+  const year = date.getFullYear()
   return `${day}.${month}.${year}`
 }
 
-const formatTime = (dateString: Date) => {
-  const hours = String(dateString.getHours()).padStart(2, '0')
-  const minutes = String(dateString.getMinutes()).padStart(2, '0')
+export const formatTime = (dateString: string) => {
+  const date = new Date(dateString)
 
-  return `${hours}:${minutes}`
+  // Subtract one hour from the date
+  date.setHours(date.getHours() - 1)
+  return date.toLocaleTimeString('ru-RU', { hour12: false, hour: '2-digit', minute: '2-digit' })
 }
