@@ -58,7 +58,7 @@ const CharityList: FC = () => {
         <View className="flex-row w-full h-max items-center">
           <ImageBackground
             source={{ uri: charity.photoUrl }}
-            resizeMode="cover"
+            resizeMode="contain"
             style={{ width: 55, height: 55 }}
             imageStyle={{ borderRadius: 25 }}
           />

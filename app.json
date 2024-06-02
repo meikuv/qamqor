@@ -17,11 +17,16 @@
       "bundleIdentifier": "com.meikuv.qamqor",
       "config": {
         "googleMapsApiKey": "AIzaSyD_Gys-vqSrIc9-WZaeTGqgdHOUC6STVY4"
+      },
+      "icon": "./assets/qamqorbol.png",
+      "infoPlist": {
+        "UILaunchStoryboardName": "SplashScreen",
+        "UIApplicationSupportsIndirectInputEvents": false
       }
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/app-splash.png",
+        "foregroundImage": "./assets/qamqorbol.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.meikuv.qamqor",

@@ -5,6 +5,7 @@ import assistanceService, {
   ILaw,
   ILawyer,
   IMapLocation,
+  IMedical,
   INeedHelp,
   IReview,
 } from '../../services/assistance.service'
@@ -21,6 +22,7 @@ interface IContext {
   canHelpList: ICanHelp[] | undefined
   needHelpList: INeedHelp[] | undefined
   combinedHelpList: Array<ICanHelp | INeedHelp> | undefined
+  medicalList: IMedical[] | undefined
   getAllCharity: () => Promise<IAssistance[] | undefined>
   getAllVolunteer: () => Promise<IAssistance[] | undefined>
   getAllLawyer: () => Promise<ILawyer[] | undefined>
@@ -29,6 +31,7 @@ interface IContext {
   getAllCanHelp: (username: string) => Promise<ICanHelp[] | undefined>
   createCanHelp: (canHelp: ICanHelp) => Promise<any>
   getAllNeedHelp: (username: string) => Promise<INeedHelp[] | undefined>
+  getAllMedical: () => Promise<IMedical[] | undefined>
   createReview: (review: IReview) => Promise<any>
   createNeedHelp: (needHelp: INeedHelp) => Promise<any>
 }
@@ -48,6 +51,7 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
   const [locationList, setLocationList] = useState<IMapLocation[]>()
   const [canHelpList, setCanHelpList] = useState<ICanHelp[]>()
   const [needHelpList, setNeedHelpList] = useState<INeedHelp[]>()
+  const [medicalList, setMedicalList] = useState<IMedical[]>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   const getAllCharity = async () => {
@@ -198,6 +202,19 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
     }
   }
 
+  const getAllMedical = async () => {
+    try {
+      setIsLoading(true)
+      const { data } = await assistanceService.getAllMedical()
+      setMedicalList(data)
+      return data
+    } catch (error) {
+      throw new Error('Get all medical error')
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
   const combinedHelpList = useMemo(() => {
     return [...(canHelpList || []), ...(needHelpList || [])].sort((a, b) => {
       const dateA = new Date(a.createdAt)
@@ -217,6 +234,7 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
       canHelpList: canHelpList,
       needHelpList: needHelpList,
       combinedHelpList: combinedHelpList,
+      medicalList: medicalList,
       getAllVolunteer: getAllVolunteer,
       getAllCharity: getAllCharity,
       getAllLawyer: getAllLawyer,
@@ -227,6 +245,7 @@ export const AssistanceProvider: FC<AssistanceProviderProps> = ({ children }) =>
       getAllNeedHelp: getAllNeedHelp,
       createNeedHelp: createNeedHelp,
       createReview: createReview,
+      getAllMedical: getAllMedical,
     }),
     [isLoading]
   )

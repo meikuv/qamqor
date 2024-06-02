@@ -10,6 +10,7 @@ import Assistance from '../../components/Assistance'
 import Law from '../../screens/law'
 import NeedHelp from '../../screens/support/NeedHelp'
 import CanHelp from '../../screens/support/CanHelp'
+import MedicalList from '../../screens/home/components/MedicalList'
 
 const Stack = createNativeStackNavigator()
 
@@ -51,6 +52,16 @@ const HomeStack = () => {
         component={VolunteerList}
         options={{
           title: `${t('home.volunteerTitle')}`,
+          headerTransparent: false,
+          headerTintColor: '#0f5645',
+          headerStyle: { backgroundColor: '#FFFFE0' },
+        }}
+      />
+      <Stack.Screen
+        name="MedicalList"
+        component={MedicalList}
+        options={{
+          title: `${t('medical.title')}`,
           headerTransparent: false,
           headerTintColor: '#0f5645',
           headerStyle: { backgroundColor: '#FFFFE0' },

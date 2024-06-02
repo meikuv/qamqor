@@ -20,6 +20,7 @@ const Home: FC = () => {
     { key: 1, title: t('home.charityTitle'), icon: 'hand-heart', navigate: 'CharityList' },
     { key: 2, title: t('home.volunteerTitle'), icon: 'account-heart', navigate: 'VolunteerList' },
     { key: 3, title: t('home.lawyerTitle'), icon: 'account-tie-outline', navigate: 'Law' },
+    { key: 4, title: t('medical.title'), icon: 'medical-bag', navigate: 'MedicalList' },
   ]
   const markers = [
     { key: 1, title: t('home.charityCenter'), iconColor: 'red', type: 'Благ фонд' },

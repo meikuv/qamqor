@@ -56,7 +56,7 @@ const NeedHelp: FC<INeedHelpProps> = ({ route }) => {
     setData({
       organization: organization,
       username: user.username,
-      fullName: `${user.firstName} ${user.lastName}` || '',
+      fullName: `${user?.firstName} ${user?.lastName}` || '',
       supportType: '',
       expand: '',
       phoneNumber: user.phoneNumber || '',

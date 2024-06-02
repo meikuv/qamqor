@@ -125,6 +125,17 @@ export interface IReview {
   comment: string
 }
 
+export interface IMedical {
+  id: number
+  name: string
+  photoUrl: string
+  address: string
+  phone: string
+  descriptionKZ: string
+  descriptionRU: string
+  websiteUrl: string
+}
+
 class AssistanceService {
   async getAllCharity() {
     return http.get<IAssistance[]>('/assistance/charity/getAll')
@@ -172,6 +183,10 @@ class AssistanceService {
 
   async createReview(review: IReview) {
     return http.post('/assistance/help/createReview', review)
+  }
+
+  async getAllMedical() {
+    return http.get<IMedical[]>('/assistance/medical/getAll')
   }
 
   async searchAssistance(endPoint: string, name: string) {

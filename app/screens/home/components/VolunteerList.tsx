@@ -31,7 +31,7 @@ const VolunteerList: FC = () => {
         <View className="flex-row w-full h-max items-center">
           <ImageBackground
             source={{ uri: volunteer.photoUrl }}
-            resizeMode="cover"
+            resizeMode="contain"
             style={{ width: 55, height: 55 }}
             imageStyle={{ borderRadius: 25 }}
           />
@@ -39,7 +39,7 @@ const VolunteerList: FC = () => {
             <Text style={{ color: '#0f5645' }} className="text-base font-medium">
               {volunteer.name}
             </Text>
-            {volunteer.contact.email && (
+            {volunteer?.contact?.email && (
               <Text style={{ color: '#0f5645' }} className="text-xs">
                 {volunteer.contact.email}
               </Text>

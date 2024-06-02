@@ -22,6 +22,7 @@ const Navigation: FC = () => {
     getAllMapLocation,
     getAllCanHelp,
     getAllNeedHelp,
+    getAllMedical,
   } = useAssistance()
   const [isSpalshLoading, setSplashIsloading] = useState<boolean>(true)
 
@@ -38,6 +39,7 @@ const Navigation: FC = () => {
           await getAllMapLocation()
           await getAllCanHelp(data.username)
           await getAllNeedHelp(data.username)
+          await getAllMedical()
         }
       } finally {
         setSplashIsloading(false)

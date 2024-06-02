@@ -15,7 +15,7 @@ const Splash: FC = () => {
   return (
     <Animated.View style={[styles.container, { opacity: fadeAnim }]}>
       <Image
-        source={require('../../../assets/app-splash.png')}
+        source={require('../../../assets/qamqorbol.png')}
         style={styles.image}
         resizeMode="contain"
       />
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#FFFFE0',
   },
   image: {
     width: '100%',

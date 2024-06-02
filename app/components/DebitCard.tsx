@@ -8,7 +8,7 @@ interface IDebitCardProps {
 
 const DebitCard: FC<IDebitCardProps> = ({ debitCardProps }) => {
   return (
-    <View className="w-72 h-max mr-2 bg-red-100 rounded-2xl">
+    <View className="flex-1 h-max mr-2 bg-red-100 rounded-2xl">
       <ImageBackground
         style={{
           flex: 1,
@@ -17,13 +17,13 @@ const DebitCard: FC<IDebitCardProps> = ({ debitCardProps }) => {
         resizeMode="cover"
         source={{ uri: 'https://i.imgur.com/kGkSg1v.png' }}
       >
-        <View className="w-full p-8">
+        <View className="flex-1 p-8">
           <View className="flex-row justify-between">
             <View>
               <Text className="text-white">Name</Text>
-              <Text className="text-white">{debitCardProps.respondent}</Text>
+              <Text className="text-white text-xs">{debitCardProps.respondent}</Text>
             </View>
-            <Image className="w-14 h-14" source={{ uri: 'https://i.imgur.com/bbPHJVe.png' }} />
+            <Image className="w-14 h-14 ml-4" source={{ uri: 'https://i.imgur.com/bbPHJVe.png' }} />
           </View>
           <View className="pt-1">
             <Text className="text-white">Account Number</Text>

@@ -57,6 +57,7 @@ const Assistance: FC<IAssistanceProps> = ({ route }) => {
             <Image
               source={{ uri: assistance.photoUrl }}
               className="h-32 w-32 bg-white rounded-full"
+              resizeMode="contain"
             />
           </View>
         </View>

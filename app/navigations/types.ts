@@ -12,6 +12,7 @@ export type TypeRootStackParamList = {
   HistoryList: undefined
   HistoryItem: any
   Review: undefined
+  Medical: undefined
   Map: any
   Law: any
   Search: undefined
