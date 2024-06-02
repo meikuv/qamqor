@@ -1,4 +1,5 @@
 import http from '../api'
+import { ICredentials } from './token.service'
 
 class AuthService {
   async login(username: string, password: string) {
@@ -11,6 +12,12 @@ class AuthService {
 
   async verification(email: string, code: string) {
     return http.post('/auth/account/verify', { email, code })
+  }
+
+  async refreshToken(token: string | undefined) {
+    return http.post<ICredentials>('/auth/account/refresh-token', {
+      token,
+    })
   }
 }
 

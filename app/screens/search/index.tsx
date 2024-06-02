@@ -21,7 +21,7 @@ const Search: FC = () => {
   }, [results, resultType])
 
   return (
-    <SafeLayout style="bg-white">
+    <SafeLayout isScrollView={true} style="bg-white">
       <View className="w-full">
         <View className="flex-row items-center justify-between px-4">
           <IconButton

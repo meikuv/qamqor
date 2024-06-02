@@ -13,6 +13,7 @@ interface IContext {
   register: (username: string, email: string, password: string) => Promise<void>
   verification: (email: string, code: string) => Promise<void>
   logout: () => Promise<void>
+  refreshAccessToken: () => Promise<string | null>
 }
 
 interface AuthProviderProps {
@@ -87,6 +88,20 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
     }
   }
 
+  const refreshAccessToken = async (): Promise<string | null> => {
+    const refreshToken = await tokenService.getLocalRefreshToken()
+    try {
+      const { data } = await authService.refreshToken(refreshToken)
+      await tokenService.setCredentials(data)
+      return data.accessToken
+    } catch (error) {
+      console.log('request')
+      await tokenService.clearCredentials()
+      setToken(null)
+      return null
+    }
+  }
+
   const logout = async () => {
     setIsLoading(true)
     try {
@@ -138,6 +153,7 @@ export const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
       isLoading: isLoading,
       token: token,
       login: login,
+      refreshAccessToken: refreshAccessToken,
       register: register,
       logout: logout,
       verification: verification,

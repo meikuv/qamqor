@@ -13,7 +13,7 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "http://172.20.10.4:8222/api/v1"
+        "EXPO_PUBLIC_API_URL": "http://careful-tiger-preferably.ngrok-free.app/api/v1"
       }
     },
     "production": {
@@ -21,7 +21,7 @@
         "buildType": "apk"
       },
       "env": {
-        "EXPO_PUBLIC_API_URL": "http://172.20.10.4:8222/api/v1"
+        "EXPO_PUBLIC_API_URL": "http://careful-tiger-preferably.ngrok-free.app/api/v1"
       }
     }
   },
